@@ -17,43 +17,22 @@ namespace POS.Infrastructure.Repositories
         readonly POSContext _context;
 
         public UserRepository(POSContext context) { _context = context; }
-
-        public int Create(User item)
-        {
-            this._context.Entry(item).State = EntityState.Added;
-            return this._context.SaveChanges();
-        }
-
-        public int Delete(string username)
-        {
-            User? item = this._context.Users.Find(username);
-            if (item != null)
-            {
-                //this._context.Users.Where(t => t.username == username).ExecuteDelete();
-                this._context.Users.Remove(item);
-                return this._context.SaveChanges();
-            }
-            else
-            {
-                throw new ArgumentNullException();
-            }
-        }
-
+        
         public int DeleteAll()
         {
             return this._context.Users.ExecuteDelete<User>();
         }
 
-        public int DeleteByFK(int roleID)
+        public int DeleteByFK(int UserID)
         {
             string commentText = @"
 delete t1
 from [User] t1
-inner join [UserRole] t2 on t1.Username = t2.Username
-where t2.RoleID =@RoleID
+inner join [UserUser] t2 on t1.Username = t2.Username
+where t2.UserID =@UserID
 ";
-            var roleIdParam = new Microsoft.Data.SqlClient.SqlParameter("@RoleID", roleID);
-            int result = this._context.Database.ExecuteSqlRaw(commentText, roleIdParam);
+            var UserIdParam = new Microsoft.Data.SqlClient.SqlParameter("@UserID", UserID);
+            int result = this._context.Database.ExecuteSqlRaw(commentText, UserIdParam);
             return result;
         }
 
@@ -74,6 +53,7 @@ where t2.RoleID =@RoleID
         public User GetByKey(string username)
         {
             User? item = this._context.Users.Find(username);
+            if (item != null) this._context.Entry(item).State = EntityState.Detached;
             return item;
         }
 
@@ -103,5 +83,42 @@ where t2.RoleID =@RoleID
 
             return result;
         }
+
+
+        public int Save(User item)
+        {
+            User existing = GetByKey(item.Username);
+            if (existing != null)
+            {
+                return Update(item);
+            }
+            else
+            {
+                return Create(item);
+            }
+        }
+
+        public int Create(User item)
+        {
+            this._context.Entry(item).State = EntityState.Added;
+            return this._context.SaveChanges();
+        }
+
+        public int Delete(string username)
+        {
+            User? item = this._context.Users.Find(username);
+            if (item != null)
+            {
+                //this._context.Users.Where(t => t.username == username).ExecuteDelete();
+                this._context.Users.Remove(item);
+                return this._context.SaveChanges();
+            }
+            else
+            {
+                throw new ArgumentNullException();
+            }
+        }
+
+
     }
 }

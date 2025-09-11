@@ -77,5 +77,35 @@ namespace POS.Api.Controllers
                 return this.StatusCode(500, ex.Message);
             }
         }
+
+        [HttpPost]
+        public ActionResult Save(User item)
+        {
+            try
+            {
+                var results = _userRepository.Save(item);
+                return this.Ok(results);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public IActionResult Delete(string id)
+        {
+            try
+            {
+                var results = _userRepository.Delete(id);
+                return this.Ok(results);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return StatusCode(500, ex.Message);
+            }
+        }
     }
 }
