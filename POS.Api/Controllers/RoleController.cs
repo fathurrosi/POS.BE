@@ -68,7 +68,7 @@ namespace POS.Api.Controllers
         }
 
         [HttpGet("Paging/{pageIndex}/{pageSize}")]
-        public async Task<ActionResult<PagingResult<Usp_GetMenuPagingResult>>> GetDataPaging(int pageIndex = 1, int pageSize = 10)
+        public async Task<ActionResult<PagingResult<Usp_GetRolePagingResult>>> GetDataPaging(int pageIndex = 1, int pageSize = 10)
         {
             try
             {
