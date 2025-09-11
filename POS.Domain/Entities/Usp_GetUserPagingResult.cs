@@ -4,20 +4,22 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetUserPagingResult
     {
         [StringLength(50)]
-        public string Username { get; set; }
+        public string Username { get; set; } = default!;
         [StringLength(1000)]
-        public string Password { get; set; }
+        public string? Password { get; set; }
         public DateTime? LastLogin { get; set; }
         public bool? IsLogin { get; set; }
         [StringLength(15)]
-        public string IPAddress { get; set; }
+        public string? IPAddress { get; set; }
         [StringLength(100)]
-        public string MachineName { get; set; }
+        public string? MachineName { get; set; }
         public bool? IsActive { get; set; }
         public int RowIndex { get; set; }
     }

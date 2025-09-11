@@ -2,8 +2,10 @@
 using Microsoft.EntityFrameworkCore;
 using POS.Application.Interfaces.Repositories;
 using POS.Domain.Entities;
+using POS.Domain.Models.Result;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -79,6 +81,27 @@ where t2.RoleID =@RoleID
         {
             this._context.Entry(item).State = EntityState.Modified;
             return this._context.SaveChanges();
+        }
+
+        public async Task<PagingResult<Usp_GetUserPagingResult>> GetDataPaging(int pageIndex, int pageSize)
+        {
+            var paramTotalRecord = new SqlParameter("@totalRecord", SqlDbType.Int);
+            paramTotalRecord.Direction = ParameterDirection.Output;
+
+            var sqlParameters = new[]
+            {
+                new SqlParameter("@text", ""),
+                new SqlParameter("@pageIndex", pageIndex),
+                new SqlParameter("@pageSize", pageSize),
+                paramTotalRecord,
+            };
+
+            PagingResult<Usp_GetUserPagingResult> result = new PagingResult<Usp_GetUserPagingResult>(pageIndex, pageSize);
+            result.Items = await _context.SqlQueryAsync<Usp_GetUserPagingResult>("EXEC [dbo].[Usp_GetUserPaging] @text = @text, @pageIndex = @pageIndex, @pageSize = @pageSize, @totalRecord = @totalRecord OUTPUT", sqlParameters, default);
+
+            result.TotalCount = (int)paramTotalRecord.Value;
+
+            return result;
         }
     }
 }

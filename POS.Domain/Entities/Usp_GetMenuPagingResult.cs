@@ -4,42 +4,44 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetMenuPagingResult
     {
         public int? ID { get; set; }
         [StringLength(100)]
-        public string Code { get; set; }
+        public string? Code { get; set; }
         [StringLength(500)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
         public int? ParentID { get; set; }
         public int? Sequence { get; set; }
         [StringLength(500)]
-        public string Ico { get; set; }
+        public string? Ico { get; set; }
         [StringLength(2147483647)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
         public DateTime? CreatedDate { get; set; }
         [StringLength(50)]
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
         [StringLength(50)]
-        public string ModifiedBy { get; set; }
+        public string? ModifiedBy { get; set; }
         [StringLength(500)]
-        public string Shortcut { get; set; }
+        public string? Shortcut { get; set; }
         public int? Ctrl { get; set; }
         public int? Shift { get; set; }
         public int? Alt { get; set; }
         [StringLength(100)]
-        public string Route { get; set; }
+        public string? Route { get; set; }
         [StringLength(100)]
-        public string Action { get; set; }
+        public string? Action { get; set; }
         [StringLength(100)]
-        public string ParentCode { get; set; }
+        public string? ParentCode { get; set; }
         [StringLength(500)]
-        public string ParentName { get; set; }
+        public string? ParentName { get; set; }
         [StringLength(2147483647)]
-        public string ParentDescription { get; set; }
+        public string? ParentDescription { get; set; }
         public int? RowIndex { get; set; }
     }
 }

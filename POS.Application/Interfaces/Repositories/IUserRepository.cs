@@ -1,4 +1,5 @@
 ﻿using POS.Domain.Entities;
+using POS.Domain.Models.Result;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,5 +17,7 @@ namespace POS.Application.Interfaces.Repositories
         int Delete(string username);
         int DeleteByFK(int roleID);
         int DeleteAll();
+
+        Task<PagingResult<Usp_GetUserPagingResult>> GetDataPaging(int pageIndex, int pageSize);
     }
 }

@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetCatalogReconcilePriceResult
     {
         [StringLength(100)]
-        public string PurchaseNo { get; set; }
+        public string? PurchaseNo { get; set; }
         public int? CatalogID { get; set; }
         [Column("Qty", TypeName = "decimal(18,2)")]
         public decimal? Qty { get; set; }
@@ -17,16 +19,16 @@ namespace POS.Domain.Entities
         public decimal? PricePerUnit { get; set; }
         public DateTime? CreatedDate { get; set; }
         [StringLength(50)]
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
         public long? ID { get; set; }
         [Column("TotalPrice", TypeName = "decimal(18,2)")]
         public decimal? TotalPrice { get; set; }
         [StringLength(50)]
-        public string Unit { get; set; }
+        public string? Unit { get; set; }
         [Column("coli", TypeName = "decimal(18,2)")]
         public decimal? coli { get; set; }
         [StringLength(100)]
-        public string CatalogName { get; set; }
+        public string? CatalogName { get; set; }
         public DateTime PurchaseDate { get; set; }
     }
 }

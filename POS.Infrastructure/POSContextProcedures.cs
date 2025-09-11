@@ -97,7 +97,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<GetGrossProfitYearlyResult>> GetGrossProfitYearlyAsync(DateOnly? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<GetGrossProfitYearlyResult>> GetGrossProfitYearlyAsync(DateTime? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -123,7 +123,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<GetHargaBeliRataResult>> GetHargaBeliRataAsync(int? catalogID, DateOnly? purchaseDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<GetHargaBeliRataResult>> GetHargaBeliRataAsync(int? catalogID, DateTime? purchaseDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -265,7 +265,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_DeleteHPPByRangeAsync(DateOnly? start, DateOnly? end, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<int> Usp_DeleteHPPByRangeAsync(DateTime? start, DateTime? end, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -775,7 +775,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetBuyPricesResult>> Usp_GetBuyPricesAsync(DateOnly? startDate, DateOnly? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetBuyPricesResult>> Usp_GetBuyPricesAsync(DateTime? startDate, DateTime? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -807,7 +807,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetByCatalogIDTransDateResult>> Usp_GetByCatalogIDTransDateAsync(int? catalogID, DateOnly? stockDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetByCatalogIDTransDateResult>> Usp_GetByCatalogIDTransDateAsync(int? catalogID, DateTime? stockDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -859,7 +859,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetCatalogByCustomerResult>> Usp_GetCatalogByCustomerAsync(int? customerID, DateOnly? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetCatalogByCustomerResult>> Usp_GetCatalogByCustomerAsync(int? customerID, DateTime? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -1199,7 +1199,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetCatalogStockByDateResult>> Usp_GetCatalogStockByDateAsync(int? catalogID, DateOnly? stockDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetCatalogStockByDateResult>> Usp_GetCatalogStockByDateAsync(int? catalogID, DateTime? stockDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -1231,7 +1231,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetCatalogStockByRangeResult>> Usp_GetCatalogStockByRangeAsync(DateOnly? startDate, DateOnly? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetCatalogStockByRangeResult>> Usp_GetCatalogStockByRangeAsync(DateTime? startDate, DateTime? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -1379,7 +1379,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetCurrentStockByCatalogIDAndDateResult>> Usp_GetCurrentStockByCatalogIDAndDateAsync(int? catalogID, DateOnly? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetCurrentStockByCatalogIDAndDateResult>> Usp_GetCurrentStockByCatalogIDAndDateAsync(int? catalogID, DateTime? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -1581,7 +1581,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetDailySalesPerCatalogResult>> Usp_GetDailySalesPerCatalogAsync(DateOnly? startDate, DateOnly? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetDailySalesPerCatalogResult>> Usp_GetDailySalesPerCatalogAsync(DateTime? startDate, DateTime? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -1613,7 +1613,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetGPPermonthResult>> Usp_GetGPPermonthAsync(DateOnly? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetGPPermonthResult>> Usp_GetGPPermonthAsync(DateTime? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -1639,7 +1639,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetGrossProfitResult>> Usp_GetGrossProfitAsync(DateOnly? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetGrossProfitResult>> Usp_GetGrossProfitAsync(DateTime? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -1665,7 +1665,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetGrossProfitPermonthResult>> Usp_GetGrossProfitPermonthAsync(DateOnly? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetGrossProfitPermonthResult>> Usp_GetGrossProfitPermonthAsync(DateTime? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -1691,7 +1691,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetGrossProfitYearlyResult>> Usp_GetGrossProfitYearlyAsync(DateOnly? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetGrossProfitYearlyResult>> Usp_GetGrossProfitYearlyAsync(DateTime? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -1717,7 +1717,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetHPPByRangeResult>> Usp_GetHPPByRangeAsync(DateOnly? start, DateOnly? end, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetHPPByRangeResult>> Usp_GetHPPByRangeAsync(DateTime? start, DateTime? end, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -1749,7 +1749,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetHPPByRangeAndCatalogIDResult>> Usp_GetHPPByRangeAndCatalogIDAsync(DateOnly? start, DateOnly? end, int? catalogID, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetHPPByRangeAndCatalogIDResult>> Usp_GetHPPByRangeAndCatalogIDAsync(DateTime? start, DateTime? end, int? catalogID, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -1787,7 +1787,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetHPPPerCatalogByDateResult>> Usp_GetHPPPerCatalogByDateAsync(int? catalogID, DateOnly? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetHPPPerCatalogByDateResult>> Usp_GetHPPPerCatalogByDateAsync(int? catalogID, DateTime? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -1819,7 +1819,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetHPPPerCatalogByRangeResult>> Usp_GetHPPPerCatalogByRangeAsync(int? catalogID, DateOnly? start, DateOnly? end, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetHPPPerCatalogByRangeResult>> Usp_GetHPPPerCatalogByRangeAsync(int? catalogID, DateTime? start, DateTime? end, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -1857,7 +1857,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetHPPPerMonthResult>> Usp_GetHPPPerMonthAsync(DateOnly? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetHPPPerMonthResult>> Usp_GetHPPPerMonthAsync(DateTime? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -1883,7 +1883,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetHPPTablePerMonthResult>> Usp_GetHPPTablePerMonthAsync(int? catalogId, DateOnly? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetHPPTablePerMonthResult>> Usp_GetHPPTablePerMonthAsync(int? catalogId, DateTime? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -1915,7 +1915,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetLastHPPResult>> Usp_GetLastHPPAsync(int? catalogID, DateOnly? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetLastHPPResult>> Usp_GetLastHPPAsync(int? catalogID, DateTime? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -1967,6 +1967,47 @@ namespace POS.Infrastructure
             return _;
         }
 
+        public virtual async Task<List<Usp_GetLogPagingResult>> Usp_GetLogPagingAsync(int? pageIndex, int? pageSize, OutputParameter<int?> totalRecord, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        {
+            var parametertotalRecord = new SqlParameter
+            {
+                ParameterName = "totalRecord",
+                Direction = System.Data.ParameterDirection.InputOutput,
+                Value = totalRecord?._value ?? Convert.DBNull,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = System.Data.ParameterDirection.Output,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "pageIndex",
+                    Value = pageIndex ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "pageSize",
+                    Value = pageSize ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.Int,
+                },
+                parametertotalRecord,
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryAsync<Usp_GetLogPagingResult>("EXEC @returnValue = [dbo].[Usp_GetLogPaging] @pageIndex = @pageIndex, @pageSize = @pageSize, @totalRecord = @totalRecord OUTPUT", sqlParameters, cancellationToken);
+
+            totalRecord?.SetValue(parametertotalRecord.Value);
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
         public virtual async Task<List<Usp_GetMenuResult>> Usp_GetMenuAsync(OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
@@ -2007,6 +2048,33 @@ namespace POS.Infrastructure
                 parameterreturnValue,
             };
             var _ = await _context.SqlQueryAsync<Usp_GetMenuByIDResult>("EXEC @returnValue = [dbo].[Usp_GetMenuByID] @ID = @ID", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
+        public virtual async Task<List<Usp_GetMenuByUsernameResult>> Usp_GetMenuByUsernameAsync(string username, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = System.Data.ParameterDirection.Output,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "Username",
+                    Size = 100,
+                    Value = username ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.VarChar,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryAsync<Usp_GetMenuByUsernameResult>("EXEC @returnValue = [dbo].[Usp_GetMenuByUsername] @Username = @Username", sqlParameters, cancellationToken);
 
             returnValue?.SetValue(parameterreturnValue.Value);
 
@@ -2061,7 +2129,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetMonthlyGrossProfitResult>> Usp_GetMonthlyGrossProfitAsync(DateOnly? startDate, DateOnly? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetMonthlyGrossProfitResult>> Usp_GetMonthlyGrossProfitAsync(DateTime? startDate, DateTime? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -2093,7 +2161,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetPerCustomerPerMonthResult>> Usp_GetPerCustomerPerMonthAsync(int? catalogID, int? customerID, DateOnly? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetPerCustomerPerMonthResult>> Usp_GetPerCustomerPerMonthAsync(int? catalogID, int? customerID, DateTime? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -2131,7 +2199,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetPerCustomerPerYearResult>> Usp_GetPerCustomerPerYearAsync(int? catalogID, int? customerID, DateOnly? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetPerCustomerPerYearResult>> Usp_GetPerCustomerPerYearAsync(int? catalogID, int? customerID, DateTime? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -2169,7 +2237,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetPerformancePerMonthResult>> Usp_GetPerformancePerMonthAsync(DateOnly? startDate, DateOnly? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetPerformancePerMonthResult>> Usp_GetPerformancePerMonthAsync(DateTime? startDate, DateTime? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -2201,7 +2269,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetPiutangResult>> Usp_GetPiutangAsync(DateOnly? startDate, DateOnly? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetPiutangResult>> Usp_GetPiutangAsync(DateTime? startDate, DateTime? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -2233,7 +2301,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetPrevBuyPricesResult>> Usp_GetPrevBuyPricesAsync(DateOnly? startDate, int? catalogID, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetPrevBuyPricesResult>> Usp_GetPrevBuyPricesAsync(DateTime? startDate, int? catalogID, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -2791,7 +2859,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetSaleNewIndexResult>> Usp_GetSaleNewIndexAsync(DateOnly? transactionDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetSaleNewIndexResult>> Usp_GetSaleNewIndexAsync(DateTime? transactionDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3012,7 +3080,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetTotalDailyPurchaseDetailResult>> Usp_GetTotalDailyPurchaseDetailAsync(DateOnly? startDate, DateOnly? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetTotalDailyPurchaseDetailResult>> Usp_GetTotalDailyPurchaseDetailAsync(DateTime? startDate, DateTime? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3044,7 +3112,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetTotalDailySalesResult>> Usp_GetTotalDailySalesAsync(DateOnly? startDate, DateOnly? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetTotalDailySalesResult>> Usp_GetTotalDailySalesAsync(DateTime? startDate, DateTime? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3076,7 +3144,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetTotalDailySalesDetailResult>> Usp_GetTotalDailySalesDetailAsync(DateOnly? startDate, DateOnly? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetTotalDailySalesDetailResult>> Usp_GetTotalDailySalesDetailAsync(DateTime? startDate, DateTime? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3108,7 +3176,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetTotalPurchasesMonthlyResult>> Usp_GetTotalPurchasesMonthlyAsync(DateOnly? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetTotalPurchasesMonthlyResult>> Usp_GetTotalPurchasesMonthlyAsync(DateTime? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3134,7 +3202,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetTotalPurchasesPerSupplierDailyResult>> Usp_GetTotalPurchasesPerSupplierDailyAsync(string supplierCode, DateOnly? from, DateOnly? to, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetTotalPurchasesPerSupplierDailyResult>> Usp_GetTotalPurchasesPerSupplierDailyAsync(string supplierCode, DateTime? from, DateTime? to, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3173,7 +3241,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetTotalPurchasesPerSupplierMonthlyResult>> Usp_GetTotalPurchasesPerSupplierMonthlyAsync(DateOnly? currentDate, string supplierCode, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetTotalPurchasesPerSupplierMonthlyResult>> Usp_GetTotalPurchasesPerSupplierMonthlyAsync(DateTime? currentDate, string supplierCode, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3206,7 +3274,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetTotalSalePerCatalogResult>> Usp_GetTotalSalePerCatalogAsync(DateOnly? startDate, DateOnly? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetTotalSalePerCatalogResult>> Usp_GetTotalSalePerCatalogAsync(DateTime? startDate, DateTime? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3238,7 +3306,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetTotalSalePerCustomerResult>> Usp_GetTotalSalePerCustomerAsync(DateOnly? startDate, DateOnly? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetTotalSalePerCustomerResult>> Usp_GetTotalSalePerCustomerAsync(DateTime? startDate, DateTime? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3270,7 +3338,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetTotalSalePerDayResult>> Usp_GetTotalSalePerDayAsync(DateOnly? startDate, DateOnly? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetTotalSalePerDayResult>> Usp_GetTotalSalePerDayAsync(DateTime? startDate, DateTime? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3302,7 +3370,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetTotalSalePermonthResult>> Usp_GetTotalSalePermonthAsync(DateOnly? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetTotalSalePermonthResult>> Usp_GetTotalSalePermonthAsync(DateTime? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3348,7 +3416,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetTotalSalesPerCustomerResult>> Usp_GetTotalSalesPerCustomerAsync(int? customerID, DateOnly? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetTotalSalesPerCustomerResult>> Usp_GetTotalSalesPerCustomerAsync(int? customerID, DateTime? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3380,7 +3448,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetTotalSalesPeritemPerMonthResult>> Usp_GetTotalSalesPeritemPerMonthAsync(DateOnly? startDate, DateOnly? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetTotalSalesPeritemPerMonthResult>> Usp_GetTotalSalesPeritemPerMonthAsync(DateTime? startDate, DateTime? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3412,7 +3480,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetTotalSalesPerMonthResult>> Usp_GetTotalSalesPerMonthAsync(DateOnly? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetTotalSalesPerMonthResult>> Usp_GetTotalSalesPerMonthAsync(DateTime? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3513,6 +3581,33 @@ namespace POS.Infrastructure
             return _;
         }
 
+        public virtual async Task<List<Usp_GetUserPrevillageByUsernameResult>> Usp_GetUserPrevillageByUsernameAsync(string username, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = System.Data.ParameterDirection.Output,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "Username",
+                    Size = 100,
+                    Value = username ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.VarChar,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryAsync<Usp_GetUserPrevillageByUsernameResult>("EXEC @returnValue = [dbo].[Usp_GetUserPrevillageByUsername] @Username = @Username", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
         public virtual async Task<List<Usp_InserCatalogResult>> Usp_InserCatalogAsync(string name, string unit, string type, string createdBy, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
@@ -3561,7 +3656,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_InserCatalogstockAsync(int? catalogID, decimal? stock, DateOnly? stockDate, string createdBy, decimal? colly, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<int> Usp_InserCatalogstockAsync(int? catalogID, decimal? stock, DateTime? stockDate, string createdBy, decimal? colly, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3705,7 +3800,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_InsertCatalogStockAsync(int? catalogID, DateOnly? stockDate, string username, decimal? stock, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<int> Usp_InsertCatalogStockAsync(int? catalogID, DateTime? stockDate, string username, decimal? stock, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3800,7 +3895,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_InsertHPPAsync(int? catalogID, DateOnly? transDate, decimal? totalHPP, decimal? prevStock, decimal? prevHPP, decimal? totalQty, decimal? totalPrice, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<int> Usp_InsertHPPAsync(int? catalogID, DateTime? transDate, decimal? totalHPP, decimal? prevStock, decimal? prevHPP, decimal? totalQty, decimal? totalPrice, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -4404,7 +4499,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_InsertSaleAsync(string transactionID, DateTime? transactionDate, int? memberID, decimal? totalPrice, string totalQty, string terminal, decimal? totalPayment, decimal? totalPaymentReturn, string notes, int? paymentType, string username, DateOnly? expiredDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<int> Usp_InsertSaleAsync(string transactionID, DateTime? transactionDate, int? memberID, decimal? totalPrice, string totalQty, string terminal, decimal? totalPayment, decimal? totalPaymentReturn, string notes, int? paymentType, string username, DateTime? expiredDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -4818,7 +4913,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_IsExistHPPResult>> Usp_IsExistHPPAsync(int? catalogID, DateOnly? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_IsExistHPPResult>> Usp_IsExistHPPAsync(int? catalogID, DateTime? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -4877,7 +4972,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_UpdateActiveCatalogstockAsync(int? catalogID, decimal? stock, DateOnly? stockDate, string createdBy, decimal? colly, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<int> Usp_UpdateActiveCatalogstockAsync(int? catalogID, decimal? stock, DateTime? stockDate, string createdBy, decimal? colly, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -5041,7 +5136,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_UpdateCatalogstockAsync(int? catalogID, decimal? stock, DateOnly? stockDate, string createdBy, decimal? colly, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<int> Usp_UpdateCatalogstockAsync(int? catalogID, decimal? stock, DateTime? stockDate, string createdBy, decimal? colly, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -5096,7 +5191,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_UpdateCatalogStockByDateAsync(int? catalogID, DateOnly? stockDate, string username, decimal? stock, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<int> Usp_UpdateCatalogStockByDateAsync(int? catalogID, DateTime? stockDate, string username, decimal? stock, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -5261,7 +5356,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_UpdateExpiredDateAsync(DateOnly? expiredDate, string transactionID, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<int> Usp_UpdateExpiredDateAsync(DateTime? expiredDate, string transactionID, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -5294,7 +5389,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_UpdateHPPByTransDateAndCatalogIDAsync(int? catalogID, DateOnly? transDate, decimal? hpp, decimal? prevStock, decimal? prevHPP, decimal? totalQty, decimal? totalPrice, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<int> Usp_UpdateHPPByTransDateAndCatalogIDAsync(int? catalogID, DateTime? transDate, decimal? hpp, decimal? prevStock, decimal? prevHPP, decimal? totalQty, decimal? totalPrice, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -5938,7 +6033,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_UpdateTodayCatalogStockAsync(int? catalogID, decimal? stock, string username, DateOnly? stockDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<int> Usp_UpdateTodayCatalogStockAsync(int? catalogID, decimal? stock, string username, DateTime? stockDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {

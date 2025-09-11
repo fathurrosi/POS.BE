@@ -4,25 +4,27 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetCatalogByIDResult
     {
         public int ID { get; set; }
         [StringLength(100)]
-        public string Name { get; set; }
-        public string Description { get; set; }
-        public string Notes { get; set; }
-        public byte[] Photo { get; set; }
+        public string? Name { get; set; }
+        public string? Description { get; set; }
+        public string? Notes { get; set; }
+        public byte[]? Photo { get; set; }
         [StringLength(20)]
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
         [StringLength(20)]
-        public string ModifiedBy { get; set; }
+        public string? ModifiedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
         [StringLength(10)]
-        public string Unit { get; set; }
+        public string? Unit { get; set; }
         [StringLength(20)]
-        public string type { get; set; }
+        public string? type { get; set; }
     }
 }

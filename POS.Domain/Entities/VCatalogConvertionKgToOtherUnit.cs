@@ -21,12 +21,11 @@ public partial class VCatalogConvertionKgToOtherUnit
     [Column(TypeName = "decimal(18, 2)")]
     public decimal? ProductQty { get; set; }
 
-    [Required]
     [Column("Convertion_Type")]
     [StringLength(25)]
     [Unicode(false)]
-    public string ConvertionType { get; set; }
+    public string ConvertionType { get; set; } = null!;
 
-    [Column("convertion_date", TypeName = "date")]
-    public DateTime? ConvertionDate { get; set; }
+    [Column("convertion_date")]
+    public DateOnly? ConvertionDate { get; set; }
 }

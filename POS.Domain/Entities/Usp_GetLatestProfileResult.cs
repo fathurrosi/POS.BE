@@ -4,35 +4,37 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetLatestProfileResult
     {
         public int ID { get; set; }
         [StringLength(500)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
         [StringLength(5000)]
-        public string Notes { get; set; }
+        public string? Notes { get; set; }
         [StringLength(500)]
-        public string Title { get; set; }
+        public string? Title { get; set; }
         [StringLength(500)]
-        public string Subtitle { get; set; }
+        public string? Subtitle { get; set; }
         [StringLength(5000)]
-        public string Address { get; set; }
+        public string? Address { get; set; }
         [StringLength(500)]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
         [StringLength(100)]
-        public string Email { get; set; }
+        public string? Email { get; set; }
         [StringLength(500)]
-        public string Website { get; set; }
-        public byte[] Logo { get; set; }
+        public string? Website { get; set; }
+        public byte[]? Logo { get; set; }
         public DateTime Created { get; set; }
         [StringLength(50)]
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
         [StringLength(50)]
-        public string LogoExtension { get; set; }
+        public string? LogoExtension { get; set; }
         public DateTime? Updated { get; set; }
         [StringLength(50)]
-        public string UpdatedBy { get; set; }
+        public string? UpdatedBy { get; set; }
     }
 }

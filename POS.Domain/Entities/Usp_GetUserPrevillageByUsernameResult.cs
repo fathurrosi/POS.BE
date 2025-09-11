@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetUserPrevillageByUsernameResult
     {
         [StringLength(50)]
-        public string Username { get; set; }
+        public string Username { get; set; } = default!;
         [StringLength(100)]
-        public string Role { get; set; }
+        public string? Role { get; set; }
         [StringLength(100)]
-        public string Menu { get; set; }
+        public string Menu { get; set; } = default!;
         public int MenuID { get; set; }
         public int RoleID { get; set; }
         public bool? AllowCreate { get; set; }

@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetPerCustomerPerMonthResult
     {
         [StringLength(100)]
-        public string CatalogName { get; set; }
+        public string? CatalogName { get; set; }
         public int CatalogID { get; set; }
         [Column("Col01", TypeName = "decimal(38,2)")]
         public decimal? Col01 { get; set; }

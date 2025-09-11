@@ -4,22 +4,24 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetCustomerResult
     {
         public long ID { get; set; }
         [StringLength(500)]
-        public string FullName { get; set; }
+        public string? FullName { get; set; }
         [StringLength(2000)]
-        public string Address { get; set; }
+        public string? Address { get; set; }
         [StringLength(50)]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
         [StringLength(50)]
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
         [StringLength(50)]
-        public string ModifiedBy { get; set; }
+        public string? ModifiedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
     }
 }

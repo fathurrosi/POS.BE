@@ -4,16 +4,18 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetGrossProfitPermonthResult
     {
-        public DateTime? TransDate { get; set; }
+        public DateOnly? TransDate { get; set; }
         [StringLength(100)]
-        public string Item { get; set; }
+        public string? Item { get; set; }
         public int ItemID { get; set; }
         [StringLength(10)]
-        public string Unit { get; set; }
+        public string? Unit { get; set; }
         [Column("Quantity", TypeName = "decimal(38,2)")]
         public decimal? Quantity { get; set; }
         [Column("HPP", TypeName = "decimal(18,2)")]

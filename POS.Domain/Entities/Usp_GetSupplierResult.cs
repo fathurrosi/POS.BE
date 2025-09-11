@@ -4,25 +4,27 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetSupplierResult
     {
         [StringLength(50)]
-        public string Code { get; set; }
+        public string Code { get; set; } = default!;
         [StringLength(500)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
         [StringLength(2147483647)]
-        public string Address { get; set; }
+        public string? Address { get; set; }
         [StringLength(20)]
-        public string Phone { get; set; }
+        public string? Phone { get; set; }
         [StringLength(20)]
-        public string CellPhone { get; set; }
+        public string? CellPhone { get; set; }
         public DateTime? CreatedDate { get; set; }
         [StringLength(50)]
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
         [StringLength(50)]
-        public string ModifiedBy { get; set; }
+        public string? ModifiedBy { get; set; }
     }
 }

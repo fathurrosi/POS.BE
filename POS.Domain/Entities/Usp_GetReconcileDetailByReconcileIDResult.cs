@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetReconcileDetailByReconcileIDResult
@@ -20,10 +22,10 @@ namespace POS.Domain.Entities
         [Column("ProductQty", TypeName = "decimal(18,2)")]
         public decimal? ProductQty { get; set; }
         [StringLength(100)]
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
         public DateTime? CreatedDate { get; set; }
         [StringLength(100)]
-        public string ModifiedBy { get; set; }
+        public string? ModifiedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
         public long? ReconcileID { get; set; }
         public DateTime? CatalogPriceDate { get; set; }

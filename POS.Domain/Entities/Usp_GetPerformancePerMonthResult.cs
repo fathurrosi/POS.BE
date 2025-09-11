@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetPerformancePerMonthResult
@@ -11,8 +13,8 @@ namespace POS.Domain.Entities
         [Column("TOTAL_SALE", TypeName = "decimal(38,2)")]
         public decimal? TOTAL_SALE { get; set; }
         [StringLength(4000)]
-        public string MONTH_YEAR { get; set; }
+        public string? MONTH_YEAR { get; set; }
         [StringLength(4000)]
-        public string YEAR_MONTH_DAY { get; set; }
+        public string? YEAR_MONTH_DAY { get; set; }
     }
 }

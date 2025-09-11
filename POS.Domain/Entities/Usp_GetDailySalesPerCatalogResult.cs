@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetDailySalesPerCatalogResult
@@ -12,13 +14,13 @@ namespace POS.Domain.Entities
         public decimal? TOTAL_SALE { get; set; }
         [Column("Quantity", TypeName = "decimal(38,2)")]
         public decimal? Quantity { get; set; }
-        public DateTime? YEAR_MONTH_DAY { get; set; }
+        public DateOnly? YEAR_MONTH_DAY { get; set; }
         [StringLength(4000)]
-        public string MONTH_YEAR { get; set; }
+        public string? MONTH_YEAR { get; set; }
         [StringLength(100)]
-        public string CATALOG_NAME { get; set; }
+        public string? CATALOG_NAME { get; set; }
         public int? CATALOG_ID { get; set; }
         [StringLength(10)]
-        public string Unit { get; set; }
+        public string? Unit { get; set; }
     }
 }

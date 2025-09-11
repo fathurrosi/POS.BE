@@ -4,19 +4,21 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetTotalDailySalesResult
     {
-        public DateTime? Tgl { get; set; }
+        public DateOnly? Tgl { get; set; }
         [StringLength(500)]
-        public string Customer { get; set; }
+        public string? Customer { get; set; }
         [Column("Harga", TypeName = "decimal(38,2)")]
         public decimal? Harga { get; set; }
         [StringLength(1)]
-        public string NoTransaksi { get; set; }
+        public string NoTransaksi { get; set; } = default!;
         [StringLength(1)]
-        public string Item { get; set; }
+        public string Item { get; set; } = default!;
         public int Qty { get; set; }
     }
 }

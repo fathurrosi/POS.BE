@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetHPPByRangeAndCatalogIDResult
     {
-        public DateTime TransDate { get; set; }
+        public DateOnly TransDate { get; set; }
         [Column("TotalHPP", TypeName = "decimal(18,2)")]
         public decimal? TotalHPP { get; set; }
         public long CatalogId { get; set; }

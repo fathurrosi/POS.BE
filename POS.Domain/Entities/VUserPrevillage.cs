@@ -9,19 +9,17 @@ namespace POS.Domain.Entities;
 [Keyless]
 public partial class VUserPrevillage
 {
-    [Required]
     [StringLength(50)]
     [Unicode(false)]
-    public string Username { get; set; }
+    public string Username { get; set; } = null!;
 
     [StringLength(100)]
     [Unicode(false)]
-    public string Role { get; set; }
+    public string? Role { get; set; }
 
-    [Required]
     [StringLength(100)]
     [Unicode(false)]
-    public string Menu { get; set; }
+    public string Menu { get; set; } = null!;
 
     [Column("MenuID")]
     public int MenuId { get; set; }

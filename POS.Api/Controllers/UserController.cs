@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using POS.Application.Interfaces.Repositories;
 using POS.Domain.Entities;
+using POS.Domain.Models.Result;
 using POS.Infrastructure.Repositories;
 using System.IdentityModel.Tokens.Jwt;
 
@@ -61,5 +62,20 @@ namespace POS.Api.Controllers
             return user;
         }
 
+        [HttpGet("Paging/{pageIndex}/{pageSize}")]
+        public async Task<ActionResult<PagingResult<Usp_GetUserPagingResult>>> GetDataPaging(int pageIndex = 1, int pageSize = 10)
+        {
+            try
+            {
+                var results = await _userRepository.GetDataPaging(pageIndex, pageSize);
+                if (results == null) return NotFound();
+                return this.Ok(results);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return this.StatusCode(500, ex.Message);
+            }
+        }
     }
 }

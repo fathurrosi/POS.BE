@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_InsertReconcileResult
@@ -11,10 +13,10 @@ namespace POS.Domain.Entities
         public long ID { get; set; }
         public DateTime? ProccessDate { get; set; }
         [StringLength(5000)]
-        public string Description { get; set; }
+        public string? Description { get; set; }
         [StringLength(100)]
-        public string purchaseno { get; set; }
+        public string? purchaseno { get; set; }
         [StringLength(100)]
-        public string transactionid { get; set; }
+        public string? transactionid { get; set; }
     }
 }

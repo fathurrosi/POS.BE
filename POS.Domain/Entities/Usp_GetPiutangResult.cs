@@ -4,15 +4,17 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetPiutangResult
     {
         public long? CustomerID { get; set; }
         [StringLength(500)]
-        public string CustomerName { get; set; }
+        public string? CustomerName { get; set; }
         [StringLength(50)]
-        public string TransactionID { get; set; }
+        public string TransactionID { get; set; } = default!;
         public DateTime TransDate { get; set; }
         [Column("TotalPrice", TypeName = "decimal(18,2)")]
         public decimal? TotalPrice { get; set; }

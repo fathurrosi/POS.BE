@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetCatalogStockByDateResult
@@ -13,7 +15,7 @@ namespace POS.Domain.Entities
         public decimal? Stock { get; set; }
         public DateOnly? StockDate { get; set; }
         [StringLength(50)]
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
         public int IsActive { get; set; }
         [Column("colly", TypeName = "decimal(18,2)")]
         public decimal? colly { get; set; }

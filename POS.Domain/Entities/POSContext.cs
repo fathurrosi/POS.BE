@@ -6,10 +6,6 @@ namespace POS.Domain.Entities;
 
 public partial class POSContext : DbContext
 {
-    public POSContext()
-    {
-    }
-
     public POSContext(DbContextOptions<POSContext> options)
         : base(options)
     {
@@ -66,10 +62,6 @@ public partial class POSContext : DbContext
     public virtual DbSet<VCatalogConvertionKgToOtherUnit> VCatalogConvertionKgToOtherUnits { get; set; }
 
     public virtual DbSet<VUserPrevillage> VUserPrevillages { get; set; }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Data Source=DESKTOP-QIORND0\\MSSQLSERVER2K12;Initial Catalog=POS;User ID=sa;Password=sa123;Trust Server Certificate=True;Command Timeout=300");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {

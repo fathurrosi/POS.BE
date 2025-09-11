@@ -4,11 +4,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetSaleNewIndexResult
     {
         [StringLength(50)]
-        public string transactionid { get; set; }
+        public string transactionid { get; set; } = default!;
     }
 }

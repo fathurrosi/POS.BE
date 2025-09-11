@@ -4,15 +4,17 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetBuyPricesResult
     {
         public int CatalogID { get; set; }
         [StringLength(100)]
-        public string CatalogName { get; set; }
+        public string? CatalogName { get; set; }
         [StringLength(10)]
-        public string Unit { get; set; }
+        public string? Unit { get; set; }
         [Column("TotalBuyPrice", TypeName = "decimal(18,2)")]
         public decimal? TotalBuyPrice { get; set; }
         [Column("TotalQty", TypeName = "decimal(18,2)")]
@@ -22,7 +24,7 @@ namespace POS.Domain.Entities
         [Column("BuyPrice", TypeName = "decimal(18,2)")]
         public decimal? BuyPrice { get; set; }
         [StringLength(50)]
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
         public DateOnly? TransDate { get; set; }
     }
 }

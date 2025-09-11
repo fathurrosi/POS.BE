@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetTotalSalePermonthResult
     {
         [Column("TotalSale", TypeName = "decimal(38,2)")]
         public decimal? TotalSale { get; set; }
-        public DateTime? TransDate { get; set; }
+        public DateOnly? TransDate { get; set; }
     }
 }

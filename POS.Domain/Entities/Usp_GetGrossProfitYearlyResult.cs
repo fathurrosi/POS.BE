@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetGrossProfitYearlyResult
@@ -11,7 +13,7 @@ namespace POS.Domain.Entities
         public DateTime TransDate { get; set; }
         public int ItemID { get; set; }
         [StringLength(100)]
-        public string Item { get; set; }
+        public string? Item { get; set; }
         [Column("Quantity", TypeName = "decimal(18,2)")]
         public decimal? Quantity { get; set; }
         [Column("Purchase", TypeName = "decimal(18,2)")]
@@ -23,6 +25,6 @@ namespace POS.Domain.Entities
         [Column("HPP", TypeName = "decimal(18,2)")]
         public decimal? HPP { get; set; }
         [StringLength(10)]
-        public string Unit { get; set; }
+        public string? Unit { get; set; }
     }
 }

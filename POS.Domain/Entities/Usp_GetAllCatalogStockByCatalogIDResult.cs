@@ -4,15 +4,17 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetAllCatalogStockByCatalogIDResult
     {
         public int CatalogID { get; set; }
         [StringLength(100)]
-        public string CatalogName { get; set; }
+        public string? CatalogName { get; set; }
         [StringLength(10)]
-        public string Unit { get; set; }
+        public string? Unit { get; set; }
         [Column("Stock", TypeName = "decimal(18,2)")]
         public decimal? Stock { get; set; }
         public DateOnly? StockDate { get; set; }

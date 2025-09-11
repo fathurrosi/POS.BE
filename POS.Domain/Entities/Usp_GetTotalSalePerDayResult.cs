@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetTotalSalePerDayResult
@@ -13,10 +15,10 @@ namespace POS.Domain.Entities
         [Column("Qty", TypeName = "decimal(38,2)")]
         public decimal? Qty { get; set; }
         [StringLength(100)]
-        public string CatalogName { get; set; }
+        public string? CatalogName { get; set; }
         public int? CatalogID { get; set; }
-        public DateTime? TransactionDate { get; set; }
+        public DateOnly? TransactionDate { get; set; }
         [StringLength(10)]
-        public string Unit { get; set; }
+        public string? Unit { get; set; }
     }
 }

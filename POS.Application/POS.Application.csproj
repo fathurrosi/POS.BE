@@ -7,10 +7,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Attribute\**" />
+    <Compile Remove="Filters\**" />
+    <Compile Remove="Handlers\**" />
     <Compile Remove="Provider\**" />
     <Compile Remove="Requirement\**" />
+    <EmbeddedResource Remove="Attribute\**" />
+    <EmbeddedResource Remove="Filters\**" />
+    <EmbeddedResource Remove="Handlers\**" />
     <EmbeddedResource Remove="Provider\**" />
     <EmbeddedResource Remove="Requirement\**" />
+    <None Remove="Attribute\**" />
+    <None Remove="Filters\**" />
+    <None Remove="Handlers\**" />
     <None Remove="Provider\**" />
     <None Remove="Requirement\**" />
   </ItemGroup>
@@ -27,12 +36,6 @@
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.3.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.3.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Attribute\" />
-    <Folder Include="Filters\" />
-    <Folder Include="Handlers\" />
   </ItemGroup>
 
 </Project>

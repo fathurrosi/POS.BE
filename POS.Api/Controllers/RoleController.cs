@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using POS.Application.Interfaces.Repositories;
 using POS.Domain.Entities;
+using POS.Domain.Models.Result;
 using POS.Infrastructure.Repositories;
 using System.Collections.Generic;
 
@@ -23,58 +24,93 @@ namespace POS.Api.Controllers
             _logger = logger;
             _roleRepository = roleRepository;
         }
-        // GET: api/<RoleController>
+        
         [HttpGet]
-        public IEnumerable<Role> Get()
+        public ActionResult<List<Role>> Get()
         {
-            IEnumerable<Role> roles = new List<Role>();
             try
             {
-                roles = _roleRepository.GetAll();
+                var results = _roleRepository.GetAll();
+                if (results == null) return NotFound();
+                return this.Ok(results);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.ToString());
-                //throw; // Re-throw the exception after logging it
-            }
-           
-            return roles;
+                return this.StatusCode(500, ex.Message);
+
+            }           
         }
 
-        // GET api/<RoleController>/5
-        [HttpGet("{username}")]
-        public List<Role> Get(string username)
+        [HttpGet("{param}")]
+        public ActionResult Get(string param)
         {
-            List<Role> items = new List<Role>();
             try
             {
-                items = _roleRepository.GetByUsername(username);
+                if (int.TryParse(param, out int id))
+                {
+                    var results = _roleRepository.GetById(id);
+                    if (results == null) return NotFound();
+                    return this.Ok(results);
+                }
+                else
+                {
+                    var results = _roleRepository.GetByUsername(param);
+                    if (results == null) return NotFound();
+                    return this.Ok(results);
+                }
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex.ToString());
-                //throw; // Re-throw the exception after logging it
+                return this.StatusCode(500, ex.Message);
             }
-
-            return items;
         }
 
-        // POST api/<RoleController>
+        [HttpGet("Paging/{pageIndex}/{pageSize}")]
+        public async Task<ActionResult<PagingResult<Usp_GetMenuPagingResult>>> GetDataPaging(int pageIndex = 1, int pageSize = 10)
+        {
+            try
+            {
+                var results = await _roleRepository.GetDataPaging(pageIndex, pageSize);
+                if (results == null) return NotFound();
+                return this.Ok(results);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return this.StatusCode(500, ex.Message);
+            }
+        }
+
         [HttpPost]
-        public void Post([FromBody] string value)
+        public ActionResult Save(Role item)
         {
+            try
+            {
+                var results = _roleRepository.Save(item);
+                return this.Ok(results);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return StatusCode(500, ex.Message);
+            }
         }
 
-        // PUT api/<RoleController>/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
-        // DELETE api/<RoleController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            try
+            {
+                var results = _roleRepository.Delete(id);
+                return this.Ok(results);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }

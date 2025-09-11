@@ -4,15 +4,17 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetTotalPurchasesPerSupplierDailyResult
     {
         [StringLength(500)]
-        public string Supplier { get; set; }
+        public string? Supplier { get; set; }
         [StringLength(50)]
-        public string SupplierCode { get; set; }
-        public DateTime? PurchaseDate { get; set; }
+        public string SupplierCode { get; set; } = default!;
+        public DateOnly? PurchaseDate { get; set; }
         [Column("TotalAmount", TypeName = "decimal(38,2)")]
         public decimal? TotalAmount { get; set; }
     }

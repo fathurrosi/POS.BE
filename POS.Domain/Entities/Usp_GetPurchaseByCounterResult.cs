@@ -4,20 +4,22 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetPurchaseByCounterResult
     {
         [StringLength(100)]
-        public string PurchaseNo { get; set; }
+        public string PurchaseNo { get; set; } = default!;
         public DateTime PurchaseDate { get; set; }
         [StringLength(2147483647)]
-        public string Notes { get; set; }
+        public string? Notes { get; set; }
         public DateTime CreatedDate { get; set; }
         [StringLength(50)]
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
         [StringLength(50)]
-        public string SupplierCode { get; set; }
+        public string? SupplierCode { get; set; }
         [Column("TotalQty", TypeName = "decimal(18,2)")]
         public decimal TotalQty { get; set; }
         [Column("TotalPrice", TypeName = "decimal(18,2)")]

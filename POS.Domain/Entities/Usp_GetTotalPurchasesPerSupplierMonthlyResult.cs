@@ -4,12 +4,14 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetTotalPurchasesPerSupplierMonthlyResult
     {
         [StringLength(100)]
-        public string Item { get; set; }
+        public string? Item { get; set; }
         [Column("Quantity", TypeName = "decimal(38,2)")]
         public decimal? Quantity { get; set; }
         [Column("TotalPurchasesAmount", TypeName = "decimal(38,2)")]

@@ -4,13 +4,15 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetHPPTablePerMonthResult
     {
         public long CatalogId { get; set; }
         [StringLength(100)]
-        public string CatalogName { get; set; }
+        public string? CatalogName { get; set; }
         [Column("col1", TypeName = "decimal(18,2)")]
         public decimal? col1 { get; set; }
         [Column("col2", TypeName = "decimal(18,2)")]

@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
+#nullable enable
+
 namespace POS.Domain.Entities
 {
     public partial class Usp_GetCatalogPriceByCatalogIDResult
@@ -16,8 +18,8 @@ namespace POS.Domain.Entities
         public decimal? SellPrice { get; set; }
         public DateTime? PriceDate { get; set; }
         [StringLength(50)]
-        public string CreatedBy { get; set; }
+        public string? CreatedBy { get; set; }
         [StringLength(50)]
-        public string SupplierCode { get; set; }
+        public string? SupplierCode { get; set; }
     }
 }

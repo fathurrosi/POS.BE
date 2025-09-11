@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using POS.Application.Interfaces.Repositories;
 using POS.Domain.Entities;
+using POS.Domain.Models.Result;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,11 @@ namespace POS.Infrastructure.Repositories
         {
             this._context.Entry(item).State = EntityState.Added;
             return this._context.SaveChanges();
+        }
+
+        public Task<PagingResult<Usp_GetLogPagingResult>> GetDataPaging(int pageIndex, int pageSize)
+        {
+            throw new NotImplementedException();
         }
     }
 }
