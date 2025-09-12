@@ -119,6 +119,13 @@ where t2.UserID =@UserID
             }
         }
 
+        public User GetByRefreshToken(string refreshToken)
+        {
+            User? item = this._context.Users.FirstOrDefault(t => t.RefreshToken == refreshToken);
+            if (item != null) this._context.Entry(item).State = EntityState.Detached;
+            return item;
+        }
+
 
     }
 }

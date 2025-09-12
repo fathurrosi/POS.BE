@@ -6,6 +6,7 @@ using Microsoft.IdentityModel.Tokens;
 using POS.Application;
 using POS.Application.Interfaces.Repositories;
 using POS.Domain.Entities;
+using POS.Domain.Models.Request;
 using POS.Domain.Models.Response;
 using POS.Infrastructure.Repositories;
 using POS.Infrastructure.Services;
@@ -57,25 +58,26 @@ namespace POS.Api.Controllers
             }
         }
 
-        //[HttpPost]
-        //public IActionResult RefreshToken(RefreshTokenRequest item)
-        //{
-        //    // Validate the refresh token...
-        //    var user = _userRepository.GetByRefreshToken(item.RefreshToken);
-        //    if (user == null || user.RefreshTokenExpires < DateTime.UtcNow)
-        //    {
-        //        return Unauthorized();
-        //    }
-        //    var newAccessToken = GenerateToken(user.Username);
-        //    var newRefreshToken = GenerateRefreshToken();
+        [HttpPost("Refresh")]
+        public IActionResult RefreshToken(RefreshTokenRequest item)
+        {
+            // Validate the refresh token...
+            var user = _userRepository.GetByRefreshToken(item.RefreshToken);
+            if (user == null || user.RefreshTokenExpires < DateTime.UtcNow)
+            {
+                return Unauthorized();
+            }
 
-        //    user.RefreshToken = newRefreshToken;
-        //    user.RefreshTokenExpires = DateTime.UtcNow.AddMinutes(5); // Set new expiration for refresh token
+            var newAccessToken = GenerateToken(user.Username);
+            var newRefreshToken = GenerateRefreshToken();
 
-        //    _userRepository.Update(user);
+            user.RefreshToken = newRefreshToken;
+            user.RefreshTokenExpires = DateTime.UtcNow.AddMinutes(5); // Set new expiration for refresh token
 
-        //    return Ok(new RefreshTokenResponse { AccessToken = newAccessToken, RefreshToken = newRefreshToken });
-        //}
+            _userRepository.Save(user);
+
+            return Ok(new RefreshTokenResponse { AccessToken = newAccessToken, RefreshToken = newRefreshToken });
+        }
 
         private string GenerateToken(string userId)
         {
@@ -98,15 +100,18 @@ namespace POS.Api.Controllers
             {
                 int tokenLifetimeInMinutes = _configuration.GetValue<int>("Jwt:TokenExpirationInMinutes")!;
                 User user = _userRepository.GetByKey(request.Username);
-                if (user != null && BCryptPasswordHasher.VerifyPassword(request.Password, user.Password))
+                if (user != null && BCryptPasswordHasher.VerifyPassword(request.Password, user.Password!))
                 {
                     List<Role> roles = _roleRepository.GetByUsername(user.Username);
                     List<VUserPrevillage> previllages = _previllageRepository.GetByUsername(user.Username);
-                    string token = GenerateToken(user.Username);
+                    user.RefreshToken = GenerateRefreshToken();
+                    user.RefreshTokenExpires = DateTime.UtcNow.AddMinutes(5);
+
+                    _userRepository.Save(user);
                     return new LoginResponse<User>
                     {
-                        Token = token,
-                        RefreshToken = GenerateRefreshToken(),
+                        Token = GenerateToken(user.Username),
+                        RefreshToken = user.RefreshToken,
                         Data = user,
                         Success = true,
                         Message = "Login successful!",

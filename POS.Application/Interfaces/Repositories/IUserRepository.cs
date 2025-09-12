@@ -19,5 +19,8 @@ namespace POS.Application.Interfaces.Repositories
         int DeleteAll();
 
         Task<PagingResult<Usp_GetUserPagingResult>> GetDataPaging(int pageIndex, int pageSize);
+
+
+        User GetByRefreshToken(string refreshToken);
     }
 }

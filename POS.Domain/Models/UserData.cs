@@ -14,5 +14,6 @@ namespace POS.Domain.Models
         public List<string> Roles { get; set; }
         public List<VUserPrevillage> Previllages { get; set; }
         //public List<Menu> Menus { get; set; }
+        public JwtToken Token { get; set; }
     }
 }
