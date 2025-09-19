@@ -17,7 +17,7 @@ using System.Text;
 
 namespace POS.Api.Controllers
 {
-    [EnableCors("AllowSpecificMethods")]
+    [EnableCors("AllowedOrigins")]
     [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase

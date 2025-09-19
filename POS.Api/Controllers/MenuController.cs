@@ -10,8 +10,8 @@ using POS.Domain.Models.Result;
 
 namespace POS.Api.Controllers
 {
-    
-    [EnableCors("AllowSpecificMethods")]
+
+    [EnableCors("AllowedOrigins")]
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]

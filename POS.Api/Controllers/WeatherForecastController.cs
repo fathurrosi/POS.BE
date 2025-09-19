@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace POS.Api.Controllers
 {
-    [EnableCors("MyPolicy")]
+    [EnableCors("AllowedOrigins")]
     [ApiController]
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase

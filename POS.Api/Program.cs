@@ -1,26 +1,17 @@
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-//using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using POS.Application.Interfaces.Repositories;
 using POS.Infrastructure;
 using POS.Infrastructure.Logging;
-//using POS.Shared.Settings;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 string[] allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>();
 builder.Services.AddCors(options =>
 {
-    options.AddPolicy(name: "AllowSpecificMethods",
-        policy =>
-        {
-            policy.WithOrigins(allowedOrigins)
-            .WithMethods("GET", "POST", "PUT", "DELETE")
-            .AllowAnyHeader();
-        });
+    options.AddPolicy("AllowedOrigins", builder => builder.WithOrigins(allowedOrigins!).AllowAnyMethod().AllowAnyHeader());
 });
-
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddServices(builder.Configuration);
 ILogRepository logRepository = builder.Services.BuildServiceProvider().GetRequiredService<ILogRepository>();
@@ -99,8 +90,7 @@ else
     app.UseSwaggerUI();
 }
 
-app.UseCors();
-
+app.UseCors("AllowedOrigins"); 
 //app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();

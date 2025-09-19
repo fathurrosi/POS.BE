@@ -7,7 +7,7 @@ namespace POS.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [EnableCors("AllowSpecificMethods")]
+    [EnableCors("AllowedOrigins")]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class ProtectedController : ControllerBase
     {

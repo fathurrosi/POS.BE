@@ -10,10 +10,10 @@ using System.Collections.Generic;
 
 namespace POS.Api.Controllers
 {    
-    [EnableCors("AllowSpecificMethods")]
+    [EnableCors("AllowedOrigins")]
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class RoleController : ControllerBase
     {
         private readonly ILogger<RoleController> _logger;

@@ -10,7 +10,7 @@ using POS.Infrastructure.Repositories;
 
 namespace POS.Api.Controllers
 {
-    [EnableCors("AllowSpecificMethods")]
+    [EnableCors("AllowedOrigins")]
     [Route("api/[controller]")]
     [ApiController]
     [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
