@@ -10,19 +10,5 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_GetGPPermonthResult
     {
-        public DateTime TransDate { get; set; }
-        [Column("Purchase", TypeName = "decimal(18,2)")]
-        public decimal? Purchase { get; set; }
-        [StringLength(100)]
-        public string? Item { get; set; }
-        public int ItemID { get; set; }
-        [StringLength(10)]
-        public string? Unit { get; set; }
-        [Column("Quantity", TypeName = "decimal(18,2)")]
-        public decimal? Quantity { get; set; }
-        [Column("HPP", TypeName = "decimal(18,2)")]
-        public decimal? HPP { get; set; }
-        public int Sale { get; set; }
-        public int GrossProfit { get; set; }
     }
 }

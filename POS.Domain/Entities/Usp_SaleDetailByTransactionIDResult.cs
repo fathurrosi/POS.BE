@@ -10,24 +10,5 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_SaleDetailByTransactionIDResult
     {
-        public int ID { get; set; }
-        [StringLength(50)]
-        public string? TransactionID { get; set; }
-        public int? CatalogID { get; set; }
-        [Column("Price", TypeName = "decimal(18,2)")]
-        public decimal? Price { get; set; }
-        [Column("Discount", TypeName = "decimal(18,2)")]
-        public decimal? Discount { get; set; }
-        [Column("Quantity", TypeName = "decimal(18,2)")]
-        public decimal? Quantity { get; set; }
-        [Column("TotalPrice", TypeName = "decimal(18,2)")]
-        public decimal? TotalPrice { get; set; }
-        public int? Sequence { get; set; }
-        [Column("coli", TypeName = "decimal(18,2)")]
-        public decimal? coli { get; set; }
-        [StringLength(100)]
-        public string? CatalogName { get; set; }
-        [StringLength(10)]
-        public string? Unit { get; set; }
     }
 }

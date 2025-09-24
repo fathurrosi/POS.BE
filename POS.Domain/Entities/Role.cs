@@ -34,4 +34,8 @@ public partial class Role
     [StringLength(20)]
     [Unicode(false)]
     public string? ModifiedBy { get; set; }
+
+    [StringLength(100)]
+    [Unicode(false)]
+    public string? Profile { get; set; }
 }

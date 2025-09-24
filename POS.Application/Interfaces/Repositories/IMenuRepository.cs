@@ -16,9 +16,7 @@ namespace POS.Application.Interfaces.Repositories
         List<Menu> GetByUsername(string username);
         Menu GetById(int id);
         public Task<PagingResult<Usp_GetMenuPagingResult>> GetDataPaging(int pageIndex, int pageSize);
-        //int Create(Menu item);
-        //int Update(Menu item);
-
+        
         int Save(Menu item);
         int Delete(int id);
 

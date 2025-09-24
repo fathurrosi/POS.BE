@@ -10,31 +10,5 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_GetLatestProfileResult
     {
-        public int ID { get; set; }
-        [StringLength(500)]
-        public string? Name { get; set; }
-        [StringLength(5000)]
-        public string? Notes { get; set; }
-        [StringLength(500)]
-        public string? Title { get; set; }
-        [StringLength(500)]
-        public string? Subtitle { get; set; }
-        [StringLength(5000)]
-        public string? Address { get; set; }
-        [StringLength(500)]
-        public string? Phone { get; set; }
-        [StringLength(100)]
-        public string? Email { get; set; }
-        [StringLength(500)]
-        public string? Website { get; set; }
-        public byte[]? Logo { get; set; }
-        public DateTime Created { get; set; }
-        [StringLength(50)]
-        public string? CreatedBy { get; set; }
-        [StringLength(50)]
-        public string? LogoExtension { get; set; }
-        public DateTime? Updated { get; set; }
-        [StringLength(50)]
-        public string? UpdatedBy { get; set; }
     }
 }

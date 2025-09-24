@@ -10,21 +10,5 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_GetGrossProfitYearlyResult
     {
-        public DateTime TransDate { get; set; }
-        public int ItemID { get; set; }
-        [StringLength(100)]
-        public string? Item { get; set; }
-        [Column("Quantity", TypeName = "decimal(18,2)")]
-        public decimal? Quantity { get; set; }
-        [Column("Purchase", TypeName = "decimal(18,2)")]
-        public decimal? Purchase { get; set; }
-        [Column("Sale", TypeName = "decimal(18,2)")]
-        public decimal? Sale { get; set; }
-        [Column("GrossProfit", TypeName = "decimal(18,2)")]
-        public decimal? GrossProfit { get; set; }
-        [Column("HPP", TypeName = "decimal(18,2)")]
-        public decimal? HPP { get; set; }
-        [StringLength(10)]
-        public string? Unit { get; set; }
     }
 }

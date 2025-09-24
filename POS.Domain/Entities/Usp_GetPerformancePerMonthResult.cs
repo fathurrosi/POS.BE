@@ -10,11 +10,5 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_GetPerformancePerMonthResult
     {
-        [Column("TOTAL_SALE", TypeName = "decimal(38,2)")]
-        public decimal? TOTAL_SALE { get; set; }
-        [StringLength(4000)]
-        public string? MONTH_YEAR { get; set; }
-        [StringLength(4000)]
-        public string? YEAR_MONTH_DAY { get; set; }
     }
 }

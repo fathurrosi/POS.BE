@@ -10,8 +10,9 @@ namespace POS.Domain.Entities;
 public partial class Profile
 {
     [Key]
-    [Column("ID")]
-    public int Id { get; set; }
+    [StringLength(100)]
+    [Unicode(false)]
+    public string Code { get; set; } = null!;
 
     [StringLength(500)]
     [Unicode(false)]

@@ -1,12 +1,12 @@
 ﻿{
    "CodeGenerationMode": 4,
    "ContextClassName": "POSContext",
-   "ContextNamespace": null,
+   "ContextNamespace": "POS.Infrastructure",
    "FilterSchemas": false,
    "IncludeConnectionString": false,
    "MinimumProductVersion": "2.6.0",
    "ModelNamespace": null,
-   "OutputContextPath": null,
+   "OutputContextPath": "C:\\Projects\\Github\\POS\\POS.BE\\POS.Infrastructure",
    "OutputPath": "Entities",
    "PreserveCasingWithRegex": true,
    "ProjectRootNamespace": "POS.Domain",
@@ -16,19 +16,11 @@
    "T4TemplatePath": null,
    "Tables": [
       {
-         "Name": "[dbo].[Catalog]",
+         "Name": "[dbo].[AuditLog]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[CatalogPrice]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[CatalogStock]",
-         "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[CatalogStockHistory]",
+         "Name": "[dbo].[Category]",
          "ObjectType": 0
       },
       {
@@ -60,11 +52,23 @@
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[Menu_backup]",
+         "Name": "[dbo].[Previllage]",
          "ObjectType": 0
       },
       {
-         "Name": "[dbo].[Previllage]",
+         "Name": "[dbo].[Product]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductPrice]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductStock]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[ProductStockHistory]",
          "ObjectType": 0
       },
       {
@@ -104,16 +108,16 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[Unit]",
+         "ObjectType": 0
+      },
+      {
          "Name": "[dbo].[User]",
          "ObjectType": 0
       },
       {
          "Name": "[dbo].[UserRole]",
          "ObjectType": 0
-      },
-      {
-         "Name": "[dbo].[v_Catalog_Convertion_Kg_to_Other_Unit]",
-         "ObjectType": 3
       },
       {
          "Name": "[dbo].[v_UserPrevillage]",
@@ -304,6 +308,10 @@
          "ObjectType": 1
       },
       {
+         "Name": "[dbo].[Usp_GetCategoryPaging]",
+         "ObjectType": 1
+      },
+      {
          "Name": "[dbo].[Usp_GetCstmPurchasePaging]",
          "ObjectType": 1
       },
@@ -441,6 +449,10 @@
       },
       {
          "Name": "[dbo].[Usp_GetPrevillageByUsername]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[Usp_GetProductPaging]",
          "ObjectType": 1
       },
       {

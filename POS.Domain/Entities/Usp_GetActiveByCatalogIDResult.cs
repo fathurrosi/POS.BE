@@ -10,14 +10,5 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_GetActiveByCatalogIDResult
     {
-        public int? CatalogID { get; set; }
-        [Column("Stock", TypeName = "decimal(18,2)")]
-        public decimal? Stock { get; set; }
-        public DateOnly? StockDate { get; set; }
-        [StringLength(50)]
-        public string? CreatedBy { get; set; }
-        public int IsActive { get; set; }
-        [Column("colly", TypeName = "decimal(18,2)")]
-        public decimal? colly { get; set; }
     }
 }

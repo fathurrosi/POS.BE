@@ -10,17 +10,5 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_GetCatalogStockByRangeResult
     {
-        public int CatalogID { get; set; }
-        [StringLength(100)]
-        public string? CatalogName { get; set; }
-        [StringLength(10)]
-        public string? Unit { get; set; }
-        public DateOnly? StockDate { get; set; }
-        [Column("Stock", TypeName = "decimal(38,2)")]
-        public decimal? Stock { get; set; }
-        [Column("TotalSale", TypeName = "decimal(38,2)")]
-        public decimal? TotalSale { get; set; }
-        [Column("TotalPurchase", TypeName = "decimal(38,2)")]
-        public decimal? TotalPurchase { get; set; }
     }
 }

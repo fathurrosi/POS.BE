@@ -10,12 +10,5 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_GetTotalSalesPerCustomerResult
     {
-        [Column("TotalQty", TypeName = "decimal(38,2)")]
-        public decimal? TotalQty { get; set; }
-        public int? CatalogID { get; set; }
-        [StringLength(100)]
-        public string? CatalogName { get; set; }
-        [StringLength(4000)]
-        public string? Bulan { get; set; }
     }
 }

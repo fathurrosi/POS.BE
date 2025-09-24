@@ -23,5 +23,7 @@ namespace POS.Domain.Entities
         [StringLength(50)]
         public string? ModifiedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
+        [StringLength(100)]
+        public string? Profile { get; set; }
     }
 }

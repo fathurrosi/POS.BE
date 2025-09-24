@@ -13,6 +13,10 @@ public partial class Catalog
     [Column("ID")]
     public int Id { get; set; }
 
+    [StringLength(50)]
+    [Unicode(false)]
+    public string? Code { get; set; }
+
     [StringLength(100)]
     [Unicode(false)]
     public string? Name { get; set; }
@@ -44,8 +48,13 @@ public partial class Catalog
     [Unicode(false)]
     public string? Unit { get; set; }
 
-    [Column("type")]
     [StringLength(20)]
     [Unicode(false)]
     public string? Type { get; set; }
+
+    public int? Category { get; set; }
+
+    [StringLength(100)]
+    [Unicode(false)]
+    public string? Profile { get; set; }
 }

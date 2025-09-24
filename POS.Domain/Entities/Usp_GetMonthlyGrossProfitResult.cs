@@ -10,19 +10,5 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_GetMonthlyGrossProfitResult
     {
-        public int CatalogID { get; set; }
-        [StringLength(100)]
-        public string? CatalogName { get; set; }
-        [StringLength(10)]
-        public string? Unit { get; set; }
-        [StringLength(4000)]
-        public string? MONTH_YEAR { get; set; }
-        [Column("TotalSale", TypeName = "decimal(38,2)")]
-        public decimal? TotalSale { get; set; }
-        [Column("TotalPurchase", TypeName = "decimal(38,2)")]
-        public decimal? TotalPurchase { get; set; }
-        [Column("MonthlyGrossProfit", TypeName = "decimal(38,2)")]
-        public decimal? MonthlyGrossProfit { get; set; }
-        public DateOnly? TempMonth { get; set; }
     }
 }

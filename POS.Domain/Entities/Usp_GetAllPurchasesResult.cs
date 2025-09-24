@@ -10,17 +10,5 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_GetAllPurchasesResult
     {
-        [Column("TotalPrice", TypeName = "decimal(18,2)")]
-        public decimal? TotalPrice { get; set; }
-        [Column("PricePerUnit", TypeName = "decimal(18,2)")]
-        public decimal? PricePerUnit { get; set; }
-        [Column("Quantity", TypeName = "decimal(18,2)")]
-        public decimal? Quantity { get; set; }
-        public DateOnly? PurchaseDate { get; set; }
-        [StringLength(100)]
-        public string? CatalogName { get; set; }
-        public int CatalogID { get; set; }
-        [StringLength(10)]
-        public string? Unit { get; set; }
     }
 }

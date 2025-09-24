@@ -10,15 +10,5 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_GetTotalDailySalesResult
     {
-        public DateOnly? Tgl { get; set; }
-        [StringLength(500)]
-        public string? Customer { get; set; }
-        [Column("Harga", TypeName = "decimal(38,2)")]
-        public decimal? Harga { get; set; }
-        [StringLength(1)]
-        public string NoTransaksi { get; set; } = default!;
-        [StringLength(1)]
-        public string Item { get; set; } = default!;
-        public int Qty { get; set; }
     }
 }
