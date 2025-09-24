@@ -64,4 +64,8 @@ public partial class Menu
     [StringLength(100)]
     [Unicode(false)]
     public string? Action { get; set; }
+
+    [StringLength(100)]
+    [Unicode(false)]
+    public string? Profile { get; set; }
 }

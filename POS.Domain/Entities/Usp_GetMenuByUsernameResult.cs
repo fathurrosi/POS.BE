@@ -36,5 +36,7 @@ namespace POS.Domain.Entities
         public string? Route { get; set; }
         [StringLength(100)]
         public string? Action { get; set; }
+        [StringLength(100)]
+        public string? Profile { get; set; }
     }
 }

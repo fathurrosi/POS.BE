@@ -32,4 +32,8 @@ public partial class Log
     [StringLength(100)]
     [Unicode(false)]
     public string? Username { get; set; }
+
+    [StringLength(100)]
+    [Unicode(false)]
+    public string? Profile { get; set; }
 }

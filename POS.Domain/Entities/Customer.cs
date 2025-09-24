@@ -38,4 +38,8 @@ public partial class Customer
 
     [Column(TypeName = "datetime")]
     public DateTime? ModifiedDate { get; set; }
+
+    [StringLength(100)]
+    [Unicode(false)]
+    public string? Profile { get; set; }
 }

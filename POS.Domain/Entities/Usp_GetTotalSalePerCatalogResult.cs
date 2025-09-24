@@ -10,18 +10,5 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_GetTotalSalePerCatalogResult
     {
-        [Column("Sale", TypeName = "decimal(38,2)")]
-        public decimal? Sale { get; set; }
-        [Column("Quantity", TypeName = "decimal(38,2)")]
-        public decimal? Quantity { get; set; }
-        [StringLength(4000)]
-        public string? MONTH_YEAR { get; set; }
-        [StringLength(4000)]
-        public string? TransDate { get; set; }
-        [StringLength(100)]
-        public string? Item { get; set; }
-        [StringLength(10)]
-        public string? Unit { get; set; }
-        public int? ItemID { get; set; }
     }
 }

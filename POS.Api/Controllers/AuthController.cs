@@ -147,6 +147,35 @@ namespace POS.Api.Controllers
             }
         }
 
-    }
+        [HttpPost("verify-token")]
+        public IActionResult VerifyToken([FromBody] TokenRequest request)
+        {
+            try
+            {
+                var token = request.Token;
+                var tokenHandler = new JwtSecurityTokenHandler();
+                var key = Encoding.UTF8.GetBytes(_configuration["Jwt:Key"]);
 
+                tokenHandler.ValidateToken(token, new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                    ValidateLifetime = true,
+                    ClockSkew = TimeSpan.Zero
+                }, out SecurityToken validatedToken);
+
+                return Ok(new { isValid = true });
+            }
+            catch (SecurityTokenException)
+            {
+                return Ok(new { isValid = false });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Internal Server Error" });
+            }
+        }
+    }
 }

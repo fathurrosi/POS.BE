@@ -12,9 +12,7 @@ namespace POS.Application.Interfaces.Repositories
     {
         List<Role> GetByUsername(string username);
         
-        List<Role> GetAll();
-        //int Create(Role item);
-        //int Update(Role item);
+        List<Role> GetAll(); 
         int Delete(int id);
         int Save(Role item);
         Role GetById(int id);

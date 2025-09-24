@@ -10,11 +10,5 @@ namespace POS.Domain.Entities
 {
     public partial class GetTotalSalesPerCustomerMonthlyResult
     {
-        [StringLength(100)]
-        public string? Item { get; set; }
-        [Column("Quantity", TypeName = "decimal(38,2)")]
-        public decimal? Quantity { get; set; }
-        [Column("TotalSalesAmount", TypeName = "decimal(38,2)")]
-        public decimal? TotalSalesAmount { get; set; }
     }
 }

@@ -42,4 +42,8 @@ public partial class Supplier
     [StringLength(50)]
     [Unicode(false)]
     public string? ModifiedBy { get; set; }
+
+    [StringLength(100)]
+    [Unicode(false)]
+    public string? Profile { get; set; }
 }

@@ -16,7 +16,7 @@ namespace POS.Api.Controllers
     [EnableCors("AllowedOrigins")]
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+    //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
     public class UserController : ControllerBase
     {
         private readonly ILogger<UserController> _logger;

@@ -40,4 +40,11 @@ public partial class User
 
     [Column(TypeName = "datetime")]
     public DateTime? RefreshTokenExpires { get; set; }
+
+    [Column(TypeName = "datetime")]
+    public DateTime? Created { get; set; }
+
+    [StringLength(100)]
+    [Unicode(false)]
+    public string? Profile { get; set; }
 }

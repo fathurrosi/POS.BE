@@ -11,8 +11,7 @@ namespace POS.Application.Interfaces.Repositories
     public interface IUserRepository
     {
         User GetByKey(string username);
-        List<User> GetAll();
-        //int Create(User item);
+        List<User> GetAll(); 
         int Save(User item);
         int Delete(string username);
         int DeleteByFK(int roleID);

@@ -24,5 +24,8 @@ namespace POS.Domain.Entities
         [StringLength(500)]
         public string? RefreshToken { get; set; }
         public DateTime? RefreshTokenExpires { get; set; }
+        public DateTime? Created { get; set; }
+        [StringLength(100)]
+        public string? Profile { get; set; }
     }
 }

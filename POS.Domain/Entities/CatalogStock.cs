@@ -23,7 +23,4 @@ public partial class CatalogStock
     public string? CreatedBy { get; set; }
 
     public int IsActive { get; set; }
-
-    [Column("colly", TypeName = "decimal(18, 2)")]
-    public decimal? Colly { get; set; }
 }
