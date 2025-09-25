@@ -25,10 +25,10 @@ namespace POS.Application.Interfaces.Repositories
     {
         List<Category> GetByUsername(string username);
 
-        List<Category> GetAll();
+        List<Category> GetByProfile(string profile);
         int Delete(int id);
         int Save(Category item);
-        Category GetById(int id);
+        Category GetByCode(string code, string profile);
         Task<PagingResult<Usp_GetCategoryPagingResult>> GetDataPaging(int pageIndex, int pageSize);
     }
 }

@@ -18,13 +18,13 @@ public partial class POSContext : DbContext
 
     public virtual DbSet<Config> Configs { get; set; }
 
-    public virtual DbSet<CurrentStock> CurrentStocks { get; set; }
-
     public virtual DbSet<Customer> Customers { get; set; }
 
     public virtual DbSet<DailyGrossProfit> DailyGrossProfits { get; set; }
 
     public virtual DbSet<Hpp> Hpps { get; set; }
+
+    public virtual DbSet<Inventory> Inventories { get; set; }
 
     public virtual DbSet<Log> Logs { get; set; }
 
@@ -33,12 +33,6 @@ public partial class POSContext : DbContext
     public virtual DbSet<Previllage> Previllages { get; set; }
 
     public virtual DbSet<Product> Products { get; set; }
-
-    public virtual DbSet<ProductPrice> ProductPrices { get; set; }
-
-    public virtual DbSet<ProductStock> ProductStocks { get; set; }
-
-    public virtual DbSet<ProductStockHistory> ProductStockHistories { get; set; }
 
     public virtual DbSet<Profile> Profiles { get; set; }
 
@@ -58,6 +52,8 @@ public partial class POSContext : DbContext
 
     public virtual DbSet<Supplier> Suppliers { get; set; }
 
+    public virtual DbSet<Transaction> Transactions { get; set; }
+
     public virtual DbSet<Unit> Units { get; set; }
 
     public virtual DbSet<User> Users { get; set; }
@@ -65,6 +61,8 @@ public partial class POSContext : DbContext
     public virtual DbSet<UserRole> UserRoles { get; set; }
 
     public virtual DbSet<VUserPrevillage> VUserPrevillages { get; set; }
+
+    public virtual DbSet<Warehouse> Warehouses { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -75,9 +73,18 @@ public partial class POSContext : DbContext
             entity.Property(e => e.LogTimestamp).HasDefaultValueSql("(getdate())");
         });
 
+        modelBuilder.Entity<Category>(entity =>
+        {
+            entity.HasOne(d => d.ProfileNavigation).WithMany(p => p.Categories)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Category_Profile");
+        });
+
         modelBuilder.Entity<Customer>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK_customer");
+            entity.HasOne(d => d.ProfileNavigation).WithMany(p => p.Customers)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Customer_Profile");
         });
 
         modelBuilder.Entity<DailyGrossProfit>(entity =>
@@ -88,6 +95,21 @@ public partial class POSContext : DbContext
         modelBuilder.Entity<Hpp>(entity =>
         {
             entity.HasKey(e => new { e.TransDate, e.CatalogId }).HasName("PK_hpp");
+        });
+
+        modelBuilder.Entity<Inventory>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Inventor__F5FDE6D37B00FB72");
+
+            entity.Property(e => e.LastUpdated).HasDefaultValueSql("(getdate())");
+
+            entity.HasOne(d => d.ProductNavigation).WithMany(p => p.Inventories)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Inventory_Product");
+
+            entity.HasOne(d => d.WarehouseNavigation).WithMany(p => p.Inventories)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Inventory_Warehouses");
         });
 
         modelBuilder.Entity<Menu>(entity =>
@@ -102,17 +124,14 @@ public partial class POSContext : DbContext
 
         modelBuilder.Entity<Product>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK_catalog");
-        });
+            entity.Property(e => e.BasePrice).HasDefaultValue(0m);
+            entity.Property(e => e.MinStock).HasDefaultValue(0);
+            entity.Property(e => e.SalesPrice).HasDefaultValue(0m);
+            entity.Property(e => e.Stock).HasDefaultValue(0);
 
-        modelBuilder.Entity<ProductPrice>(entity =>
-        {
-            entity.HasKey(e => e.Id).HasName("PK_CatalogPrice");
-        });
-
-        modelBuilder.Entity<ProductStockHistory>(entity =>
-        {
-            entity.Property(e => e.Id).ValueGeneratedOnAdd();
+            entity.HasOne(d => d.ProfileNavigation).WithMany(p => p.Products)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Product_Profile");
         });
 
         modelBuilder.Entity<Purchase>(entity =>
@@ -154,7 +173,16 @@ public partial class POSContext : DbContext
 
         modelBuilder.Entity<Supplier>(entity =>
         {
-            entity.HasKey(e => e.Code).HasName("PK_supplier");
+            entity.HasOne(d => d.ProfileNavigation).WithMany(p => p.Suppliers)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Supplier_Profile");
+        });
+
+        modelBuilder.Entity<Transaction>(entity =>
+        {
+            entity.HasKey(e => e.TransactionId).HasName("PK__Transact__55433A4BD175584C");
+
+            entity.Property(e => e.TransactionDate).HasDefaultValueSql("(getdate())");
         });
 
         modelBuilder.Entity<UserRole>(entity =>
@@ -165,6 +193,11 @@ public partial class POSContext : DbContext
         modelBuilder.Entity<VUserPrevillage>(entity =>
         {
             entity.ToView("v_UserPrevillage");
+        });
+
+        modelBuilder.Entity<Warehouse>(entity =>
+        {
+            entity.HasKey(e => e.Id).HasName("PK__Warehous__2608AFD933081C7D");
         });
 
         OnModelCreatingPartial(modelBuilder);

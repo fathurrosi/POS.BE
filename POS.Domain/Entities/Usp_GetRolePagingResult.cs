@@ -10,17 +10,5 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_GetRolePagingResult
     {
-        public int? ID { get; set; }
-        [StringLength(100)]
-        public string? Name { get; set; }
-        [StringLength(1000)]
-        public string? Description { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        [StringLength(20)]
-        public string? CreatedBy { get; set; }
-        public DateTime? ModifiedDate { get; set; }
-        [StringLength(20)]
-        public string? ModifiedBy { get; set; }
-        public int? RowIndex { get; set; }
     }
 }

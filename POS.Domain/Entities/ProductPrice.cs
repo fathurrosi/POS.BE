@@ -6,15 +6,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace POS.Domain.Entities;
 
+[PrimaryKey("ProductCode", "Profile")]
 [Table("ProductPrice")]
 public partial class ProductPrice
 {
     [Key]
-    [Column("ID")]
-    public int Id { get; set; }
-
-    [Column("ProductID")]
-    public int? ProductId { get; set; }
+    [StringLength(50)]
+    [Unicode(false)]
+    public string ProductCode { get; set; } = null!;
 
     [Column(TypeName = "decimal(18, 2)")]
     public decimal? BuyPricePerunit { get; set; }
@@ -32,4 +31,9 @@ public partial class ProductPrice
     [StringLength(50)]
     [Unicode(false)]
     public string? SupplierCode { get; set; }
+
+    [Key]
+    [StringLength(100)]
+    [Unicode(false)]
+    public string Profile { get; set; } = null!;
 }

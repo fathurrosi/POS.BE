@@ -6,12 +6,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace POS.Domain.Entities;
 
+[PrimaryKey("Code", "Profile")]
 [Table("Category")]
 public partial class Category
 {
     [Key]
-    [Column("ID")]
-    public int Id { get; set; }
+    [StringLength(10)]
+    [Unicode(false)]
+    public string Code { get; set; } = null!;
 
     [StringLength(100)]
     [Unicode(false)]
@@ -31,7 +33,12 @@ public partial class Category
     [Column(TypeName = "datetime")]
     public DateTime? ModifiedDate { get; set; }
 
+    [Key]
     [StringLength(100)]
     [Unicode(false)]
-    public string? Profile { get; set; }
+    public string Profile { get; set; } = null!;
+
+    [ForeignKey("Profile")]
+    [InverseProperty("Categories")]
+    public virtual Profile ProfileNavigation { get; set; } = null!;
 }

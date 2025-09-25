@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace POS.Domain.Entities;
 
+[PrimaryKey("Code", "Profile")]
 [Table("Supplier")]
 public partial class Supplier
 {
@@ -43,7 +44,12 @@ public partial class Supplier
     [Unicode(false)]
     public string? ModifiedBy { get; set; }
 
+    [Key]
     [StringLength(100)]
     [Unicode(false)]
-    public string? Profile { get; set; }
+    public string Profile { get; set; } = null!;
+
+    [ForeignKey("Profile")]
+    [InverseProperty("Suppliers")]
+    public virtual Profile ProfileNavigation { get; set; } = null!;
 }

@@ -18,7 +18,7 @@ namespace POS.Infrastructure
         Task<List<GetGrossProfitYearlyResult>> GetGrossProfitYearlyAsync(DateOnly? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<GetHargaBeliRataResult>> GetHargaBeliRataAsync(int? catalogID, DateOnly? purchaseDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<GetTotalSalesPerCustomerMonthlyResult>> GetTotalSalesPerCustomerMonthlyAsync(int? customerID, DateTime? currentDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
-        Task<int> Usp_DeleteCatalogByIDAsync(int? iD, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<List<Usp_DeleteCatalogByIDResult>> Usp_DeleteCatalogByIDAsync(int? iD, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<int> Usp_DeleteCustomerAsync(int? iD, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<int> Usp_DeleteDailyGrossProfitAsync(DateTime? transDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<int> Usp_DeleteHPPByRangeAsync(DateOnly? start, DateOnly? end, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
@@ -139,7 +139,7 @@ namespace POS.Infrastructure
         Task<List<Usp_InserCatalogstockResult>> Usp_InserCatalogstockAsync(int? catalogID, decimal? stock, DateOnly? stockDate, string createdBy, decimal? colly, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<Usp_InsertAndGetCustomerResult>> Usp_InsertAndGetCustomerAsync(string fullName, string address, string phone, string createdBy, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<Usp_InsertAndGetSupplierResult>> Usp_InsertAndGetSupplierAsync(string code, string name, string createdBy, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
-        Task<int> Usp_InsertCatalogStockAsync(int? catalogID, DateOnly? stockDate, string username, decimal? stock, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<List<Usp_InsertCatalogStockResult>> Usp_InsertCatalogStockAsync(int? catalogID, DateOnly? stockDate, string username, decimal? stock, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<int> Usp_InsertCustomerAsync(string fullName, string address, string phone, string createdBy, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<int> Usp_InsertHPPAsync(int? catalogID, DateOnly? transDate, decimal? totalHPP, decimal? prevStock, decimal? prevHPP, decimal? totalQty, decimal? totalPrice, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<int> Usp_InsertLogAsync(string computerName, string iPAddress, string logType, string logMessage, string username, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
@@ -161,9 +161,9 @@ namespace POS.Infrastructure
         Task<List<Usp_SaleDetailByTransactionIDResult>> Usp_SaleDetailByTransactionIDAsync(string transactionID, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<Usp_UpdateActiveCatalogstockResult>> Usp_UpdateActiveCatalogstockAsync(int? catalogID, decimal? stock, DateOnly? stockDate, string createdBy, decimal? colly, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<Usp_UpdateCatalogResult>> Usp_UpdateCatalogAsync(int? iD, string name, string unit, string type, string modifiedBy, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
-        Task<int> Usp_UpdateCatalogpriceAsync(int? catalogID, decimal? buyPricePerunit, decimal? sellPrice, DateTime? priceDate, string username, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<List<Usp_UpdateCatalogpriceResult>> Usp_UpdateCatalogpriceAsync(int? catalogID, decimal? buyPricePerunit, decimal? sellPrice, DateTime? priceDate, string username, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<Usp_UpdateCatalogstockResult>> Usp_UpdateCatalogstockAsync(int? catalogID, decimal? stock, DateOnly? stockDate, string createdBy, decimal? colly, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
-        Task<int> Usp_UpdateCatalogStockByDateAsync(int? catalogID, DateOnly? stockDate, string username, decimal? stock, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<List<Usp_UpdateCatalogStockByDateResult>> Usp_UpdateCatalogStockByDateAsync(int? catalogID, DateOnly? stockDate, string username, decimal? stock, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<int> Usp_UpdateCustomerAsync(int? iD, string fullName, string address, string phone, string modifiedBy, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<int> Usp_UpdateDailyGrossProfitAsync(DateTime? transDate, int? catalogID, decimal? quantity, decimal? purchase, decimal? sale, decimal? grossProfit, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<int> Usp_UpdateExpiredDateAsync(DateOnly? expiredDate, string transactionID, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
@@ -177,7 +177,7 @@ namespace POS.Infrastructure
         Task<int> Usp_UpdateSaleBySaleAsync(string transactionID, DateTime? updatedDate, string updatedBy, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<int> Usp_UpdateSaleDetailAsync(int? iD, int? catalogID, decimal? price, decimal? discount, decimal? quantity, decimal? totalPrice, int? sequence, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<int> Usp_UpdateSupplierAsync(string code, string name, string address, string phone, string cellPhone, string modifiedBy, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
-        Task<int> Usp_UpdateTodayCatalogStockAsync(int? catalogID, decimal? stock, string username, DateOnly? stockDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<List<Usp_UpdateTodayCatalogStockResult>> Usp_UpdateTodayCatalogStockAsync(int? catalogID, decimal? stock, string username, DateOnly? stockDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<int> Usp_UpdateUserAsync(string username, string iPAddress, string machineName, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<int> Usp_UpdateUserPasswordAsync(string username, string password, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
     }

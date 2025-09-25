@@ -10,9 +10,5 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_GetCategoryPagingResult
     {
-        public int? ID { get; set; }
-        [StringLength(500)]
-        public string? Name { get; set; }
-        public int? RowIndex { get; set; }
     }
 }

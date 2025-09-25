@@ -27,6 +27,6 @@ namespace POS.Domain.Entities
         [StringLength(50)]
         public string? ModifiedBy { get; set; }
         [StringLength(100)]
-        public string? Profile { get; set; }
+        public string Profile { get; set; } = default!;
     }
 }
