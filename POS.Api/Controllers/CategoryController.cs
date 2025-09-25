@@ -1,13 +1,8 @@
-﻿
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Cors;
+﻿using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
 using POS.Application.Interfaces.Repositories;
 using POS.Domain.Entities;
 using POS.Domain.Models.Result;
-using POS.Infrastructure.Repositories;
-using System.Collections.Generic;
 
 namespace POS.Api.Controllers
 {
@@ -26,12 +21,12 @@ namespace POS.Api.Controllers
             _CategoryRepository = CategoryRepository;
         }
 
-        [HttpGet]
-        public ActionResult<List<Category>> Get()
+        [HttpGet("{profile}")]
+        public ActionResult<List<Category>> Get(string profile)
         {
             try
             {
-                var results = _CategoryRepository.GetAll();
+                var results = _CategoryRepository.GetByProfile(profile);
                 if (results == null) return NotFound();
                 return this.Ok(results);
             }
@@ -43,23 +38,15 @@ namespace POS.Api.Controllers
             }
         }
 
-        [HttpGet("{param}")]
-        public ActionResult Get(string param)
+        [HttpGet("{code}/{profile}")]
+        public ActionResult Get(string code, string profile)
         {
             try
             {
-                if (int.TryParse(param, out int id))
-                {
-                    var results = _CategoryRepository.GetById(id);
-                    if (results == null) return NotFound();
-                    return this.Ok(results);
-                }
-                else
-                {
-                    var results = _CategoryRepository.GetByUsername(param);
-                    if (results == null) return NotFound();
-                    return this.Ok(results);
-                }
+                var results = _CategoryRepository.GetByCode(code, profile);
+                if (results == null) return NotFound();
+                return this.Ok(results);
+
             }
             catch (Exception ex)
             {

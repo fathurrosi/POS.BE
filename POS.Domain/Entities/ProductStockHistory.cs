@@ -13,8 +13,9 @@ public partial class ProductStockHistory
     [Column("ID")]
     public long Id { get; set; }
 
-    [Column("ProductID")]
-    public int ProductId { get; set; }
+    [StringLength(50)]
+    [Unicode(false)]
+    public string ProductCode { get; set; } = null!;
 
     [Column(TypeName = "decimal(18, 2)")]
     public decimal? Stock { get; set; }

@@ -9,13 +9,9 @@ namespace POS.Domain.Entities;
 [Table("Product")]
 public partial class Product
 {
-    [Key]
-    [Column("ID")]
-    public int Id { get; set; }
-
     [StringLength(50)]
     [Unicode(false)]
-    public string? Code { get; set; }
+    public string Code { get; set; } = null!;
 
     [StringLength(100)]
     [Unicode(false)]
@@ -56,5 +52,27 @@ public partial class Product
 
     [StringLength(100)]
     [Unicode(false)]
-    public string? Profile { get; set; }
+    public string Profile { get; set; } = null!;
+
+    [Key]
+    [StringLength(100)]
+    [Unicode(false)]
+    public string UniqueCode { get; set; } = null!;
+
+    public int? Stock { get; set; }
+
+    public int? MinStock { get; set; }
+
+    [Column(TypeName = "decimal(18, 2)")]
+    public decimal? BasePrice { get; set; }
+
+    [Column(TypeName = "decimal(18, 2)")]
+    public decimal? SalesPrice { get; set; }
+
+    [InverseProperty("ProductNavigation")]
+    public virtual ICollection<Inventory> Inventories { get; set; } = new List<Inventory>();
+
+    [ForeignKey("Profile")]
+    [InverseProperty("Products")]
+    public virtual Profile ProfileNavigation { get; set; } = null!;
 }

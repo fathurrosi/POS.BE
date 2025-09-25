@@ -15,7 +15,7 @@ namespace POS.Application.Interfaces.Repositories
         List<Customer> GetAll(); 
         int Delete(int id);
         int Save(Customer item);
-        Customer GetById(int id);
+        Customer GetByCode(string code, string profile);
         Task<PagingResult<Usp_GetCustomerPagingResult>> GetDataPaging(int pageIndex, int pageSize);
     }
 }

@@ -15,7 +15,7 @@ namespace POS.Application.Interfaces.Repositories
         List<Supplier> GetAll(); 
         int Delete(int id);
         int Save(Supplier item);
-        Supplier GetById(int id);
+        Supplier GetByCode(string code, string profile);
         Task<PagingResult<Usp_GetSupplierPagingResult>> GetDataPaging(int pageIndex, int pageSize);
     }
 }

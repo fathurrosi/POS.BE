@@ -10,20 +10,5 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_GetCustomerByIDResult
     {
-        public long ID { get; set; }
-        [StringLength(500)]
-        public string? FullName { get; set; }
-        [StringLength(2000)]
-        public string? Address { get; set; }
-        [StringLength(50)]
-        public string? Phone { get; set; }
-        [StringLength(50)]
-        public string? CreatedBy { get; set; }
-        public DateTime? CreatedDate { get; set; }
-        [StringLength(50)]
-        public string? ModifiedBy { get; set; }
-        public DateTime? ModifiedDate { get; set; }
-        [StringLength(100)]
-        public string? Profile { get; set; }
     }
 }

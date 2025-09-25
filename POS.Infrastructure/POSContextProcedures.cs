@@ -187,7 +187,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_DeleteCatalogByIDAsync(int? iD, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_DeleteCatalogByIDResult>> Usp_DeleteCatalogByIDAsync(int? iD, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -206,7 +206,7 @@ namespace POS.Infrastructure
                 },
                 parameterreturnValue,
             };
-            var _ = await _context.Database.ExecuteSqlRawAsync("EXEC @returnValue = [dbo].[Usp_DeleteCatalogByID] @ID = @ID", sqlParameters, cancellationToken);
+            var _ = await _context.SqlQueryAsync<Usp_DeleteCatalogByIDResult>("EXEC @returnValue = [dbo].[Usp_DeleteCatalogByID] @ID = @ID", sqlParameters, cancellationToken);
 
             returnValue?.SetValue(parameterreturnValue.Value);
 
@@ -3917,7 +3917,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_InsertCatalogStockAsync(int? catalogID, DateOnly? stockDate, string username, decimal? stock, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_InsertCatalogStockResult>> Usp_InsertCatalogStockAsync(int? catalogID, DateOnly? stockDate, string username, decimal? stock, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -3957,7 +3957,7 @@ namespace POS.Infrastructure
                 },
                 parameterreturnValue,
             };
-            var _ = await _context.Database.ExecuteSqlRawAsync("EXEC @returnValue = [dbo].[Usp_InsertCatalogStock] @CatalogID = @CatalogID, @StockDate = @StockDate, @Username = @Username, @Stock = @Stock", sqlParameters, cancellationToken);
+            var _ = await _context.SqlQueryAsync<Usp_InsertCatalogStockResult>("EXEC @returnValue = [dbo].[Usp_InsertCatalogStock] @CatalogID = @CatalogID, @StockDate = @StockDate, @Username = @Username, @Stock = @Stock", sqlParameters, cancellationToken);
 
             returnValue?.SetValue(parameterreturnValue.Value);
 
@@ -5198,7 +5198,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_UpdateCatalogpriceAsync(int? catalogID, decimal? buyPricePerunit, decimal? sellPrice, DateTime? priceDate, string username, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_UpdateCatalogpriceResult>> Usp_UpdateCatalogpriceAsync(int? catalogID, decimal? buyPricePerunit, decimal? sellPrice, DateTime? priceDate, string username, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -5246,7 +5246,7 @@ namespace POS.Infrastructure
                 },
                 parameterreturnValue,
             };
-            var _ = await _context.Database.ExecuteSqlRawAsync("EXEC @returnValue = [dbo].[Usp_UpdateCatalogprice] @CatalogID = @CatalogID, @BuyPricePerunit = @BuyPricePerunit, @SellPrice = @SellPrice, @PriceDate = @PriceDate, @Username = @Username", sqlParameters, cancellationToken);
+            var _ = await _context.SqlQueryAsync<Usp_UpdateCatalogpriceResult>("EXEC @returnValue = [dbo].[Usp_UpdateCatalogprice] @CatalogID = @CatalogID, @BuyPricePerunit = @BuyPricePerunit, @SellPrice = @SellPrice, @PriceDate = @PriceDate, @Username = @Username", sqlParameters, cancellationToken);
 
             returnValue?.SetValue(parameterreturnValue.Value);
 
@@ -5308,7 +5308,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_UpdateCatalogStockByDateAsync(int? catalogID, DateOnly? stockDate, string username, decimal? stock, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_UpdateCatalogStockByDateResult>> Usp_UpdateCatalogStockByDateAsync(int? catalogID, DateOnly? stockDate, string username, decimal? stock, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -5348,7 +5348,7 @@ namespace POS.Infrastructure
                 },
                 parameterreturnValue,
             };
-            var _ = await _context.Database.ExecuteSqlRawAsync("EXEC @returnValue = [dbo].[Usp_UpdateCatalogStockByDate] @CatalogID = @CatalogID, @StockDate = @StockDate, @Username = @Username, @Stock = @Stock", sqlParameters, cancellationToken);
+            var _ = await _context.SqlQueryAsync<Usp_UpdateCatalogStockByDateResult>("EXEC @returnValue = [dbo].[Usp_UpdateCatalogStockByDate] @CatalogID = @CatalogID, @StockDate = @StockDate, @Username = @Username, @Stock = @Stock", sqlParameters, cancellationToken);
 
             returnValue?.SetValue(parameterreturnValue.Value);
 
@@ -6150,7 +6150,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_UpdateTodayCatalogStockAsync(int? catalogID, decimal? stock, string username, DateOnly? stockDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_UpdateTodayCatalogStockResult>> Usp_UpdateTodayCatalogStockAsync(int? catalogID, decimal? stock, string username, DateOnly? stockDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -6190,7 +6190,7 @@ namespace POS.Infrastructure
                 },
                 parameterreturnValue,
             };
-            var _ = await _context.Database.ExecuteSqlRawAsync("EXEC @returnValue = [dbo].[Usp_UpdateTodayCatalogStock] @CatalogID = @CatalogID, @Stock = @Stock, @Username = @Username, @StockDate = @StockDate", sqlParameters, cancellationToken);
+            var _ = await _context.SqlQueryAsync<Usp_UpdateTodayCatalogStockResult>("EXEC @returnValue = [dbo].[Usp_UpdateTodayCatalogStock] @CatalogID = @CatalogID, @Stock = @Stock, @Username = @Username, @StockDate = @StockDate", sqlParameters, cancellationToken);
 
             returnValue?.SetValue(parameterreturnValue.Value);
 

@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace POS.Domain.Entities
 {
-    public partial class Usp_GetPiutangResult
+    public partial class Usp_UpdateCatalogStockByDateResult
     {
     }
 }

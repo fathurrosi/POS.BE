@@ -18,6 +18,11 @@ namespace POS.Infrastructure
             services.AddTransient<IMenuRepository, MenuRepository>();
             services.AddTransient<IPrevillageRepository, PrevillageRepository>();
             services.AddTransient<IJwtService, JwtService>();
+
+            services.AddTransient<ICategoryRepository, CategoryRepository>();
+            services.AddTransient<ICustomerRepository, CustomerRepository>();
+            services.AddTransient<IProductRepository, ProductRepository>();
+            services.AddTransient<ISupplierRepository, SupplierRepository>();
             return services;
         }
     }

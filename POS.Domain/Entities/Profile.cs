@@ -66,4 +66,16 @@ public partial class Profile
     [StringLength(50)]
     [Unicode(false)]
     public string? UpdatedBy { get; set; }
+
+    [InverseProperty("ProfileNavigation")]
+    public virtual ICollection<Category> Categories { get; set; } = new List<Category>();
+
+    [InverseProperty("ProfileNavigation")]
+    public virtual ICollection<Customer> Customers { get; set; } = new List<Customer>();
+
+    [InverseProperty("ProfileNavigation")]
+    public virtual ICollection<Product> Products { get; set; } = new List<Product>();
+
+    [InverseProperty("ProfileNavigation")]
+    public virtual ICollection<Supplier> Suppliers { get; set; } = new List<Supplier>();
 }

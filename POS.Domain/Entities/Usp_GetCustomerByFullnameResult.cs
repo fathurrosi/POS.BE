@@ -10,7 +10,8 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_GetCustomerByFullnameResult
     {
-        public long ID { get; set; }
+        [StringLength(50)]
+        public string Code { get; set; } = default!;
         [StringLength(500)]
         public string? FullName { get; set; }
         [StringLength(2000)]
@@ -24,6 +25,6 @@ namespace POS.Domain.Entities
         public string? ModifiedBy { get; set; }
         public DateTime? ModifiedDate { get; set; }
         [StringLength(100)]
-        public string? Profile { get; set; }
+        public string Profile { get; set; } = default!;
     }
 }
