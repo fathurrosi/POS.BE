@@ -29,10 +29,9 @@ namespace POS.Infrastructure.Repositories
             return -1;
         }
 
-
-        public List<Customer> GetAll()
+        public List<Customer> GetByProfile(string profile)
         {
-            return this._context.Customers.AsNoTracking().ToList();
+            return this._context.Customers.Where(t => t.Profile == profile).AsNoTracking().ToList();
         }
 
         public Customer GetByCode(string code, string profile)

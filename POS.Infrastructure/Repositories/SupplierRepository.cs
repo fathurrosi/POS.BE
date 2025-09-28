@@ -30,9 +30,9 @@ namespace POS.Infrastructure.Repositories
         }
 
 
-        public List<Supplier> GetAll()
+        public List<Supplier> GetByProfile(string profile)
         {
-            return this._context.Suppliers.AsNoTracking().ToList();
+            return this._context.Suppliers.Where(t => t.Profile == profile).AsNoTracking().ToList();
         }
 
         public Supplier GetByCode(string code, string profile)
