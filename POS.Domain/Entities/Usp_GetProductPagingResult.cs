@@ -10,5 +10,34 @@ namespace POS.Domain.Entities
 {
     public partial class Usp_GetProductPagingResult
     {
+        [StringLength(50)]
+        public string Code { get; set; } = default!;
+        [StringLength(100)]
+        public string? Name { get; set; }
+        public string? Description { get; set; }
+        public string? Notes { get; set; }
+        public byte[]? Photo { get; set; }
+        [StringLength(20)]
+        public string? CreatedBy { get; set; }
+        public DateTime? CreatedDate { get; set; }
+        [StringLength(20)]
+        public string? ModifiedBy { get; set; }
+        public DateTime? ModifiedDate { get; set; }
+        [StringLength(10)]
+        public string? Unit { get; set; }
+        [StringLength(20)]
+        public string? Type { get; set; }
+        public int? Category { get; set; }
+        [StringLength(100)]
+        public string Profile { get; set; } = default!;
+        [StringLength(100)]
+        public string UniqueCode { get; set; } = default!;
+        public int? Stock { get; set; }
+        public int? MinStock { get; set; }
+        [Column("BasePrice", TypeName = "decimal(18,2)")]
+        public decimal? BasePrice { get; set; }
+        [Column("SalesPrice", TypeName = "decimal(18,2)")]
+        public decimal? SalesPrice { get; set; }
+        public int? RowIndex { get; set; }
     }
 }

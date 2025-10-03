@@ -23,6 +23,7 @@ namespace POS.Infrastructure
             services.AddTransient<ICustomerRepository, CustomerRepository>();
             services.AddTransient<IProductRepository, ProductRepository>();
             services.AddTransient<ISupplierRepository, SupplierRepository>();
+            services.AddTransient<IUnitRepository,UnitRepository>();
             return services;
         }
     }

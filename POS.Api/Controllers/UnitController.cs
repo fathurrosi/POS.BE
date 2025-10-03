@@ -10,23 +10,23 @@ namespace POS.Api.Controllers
     [Route("api/[controller]")]
     [ApiController]
     //[Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
-    public class CategoryController : ControllerBase
+    public class UnitController : ControllerBase
     {
-        private readonly ILogger<CategoryController> _logger;
-        private readonly ICategoryRepository _CategoryRepository;
+        private readonly ILogger<UnitController> _logger;
+        private readonly IUnitRepository _UnitRepository;
 
-        public CategoryController(ILogger<CategoryController> logger, ICategoryRepository CategoryRepository)
+        public UnitController(ILogger<UnitController> logger, IUnitRepository UnitRepository)
         {
             _logger = logger;
-            _CategoryRepository = CategoryRepository;
+            _UnitRepository = UnitRepository;
         }
 
         [HttpGet("{profile}")]
-        public ActionResult<List<Category>> Get(string profile)
+        public ActionResult<List<Unit>> Get(string profile)
         {
             try
             {
-                var results = _CategoryRepository.GetByProfile(profile);
+                var results = _UnitRepository.GetByProfile(profile);
                 if (results == null) return NotFound();
                 return this.Ok(results);
             }
@@ -43,7 +43,7 @@ namespace POS.Api.Controllers
         {
             try
             {
-                var results = _CategoryRepository.GetByCode(code, profile);
+                var results = _UnitRepository.GetByCode(code, profile);
                 if (results == null) return NotFound();
                 return this.Ok(results);
 
@@ -59,11 +59,11 @@ namespace POS.Api.Controllers
 
 
         [HttpGet("{pageIndex}/{pageSize}/{profile}")]
-        public async Task<ActionResult<PagingResult<Usp_GetCategoryPagingResult>>> GetDataPaging(int pageIndex = 1, int pageSize = 10, string profile="")
+        public async Task<ActionResult<PagingResult<Usp_GetUnitPagingResult>>> GetDataPaging(int pageIndex = 1, int pageSize = 10, string profile="")
         {
             try
             {
-                var results = await _CategoryRepository.GetDataPaging(pageIndex, pageSize, profile);
+                var results = await _UnitRepository.GetDataPaging(pageIndex, pageSize, profile);
                 if (results == null) return NotFound();
                 return this.Ok(results);
             }
@@ -75,11 +75,11 @@ namespace POS.Api.Controllers
         }
 
         [HttpPost]
-        public ActionResult Save(Category item)
+        public ActionResult Save(Unit item)
         {
             try
             {
-                var results = _CategoryRepository.Save(item);
+                var results = _UnitRepository.Save(item);
                 return this.Ok(results);
             }
             catch (Exception ex)
@@ -94,7 +94,7 @@ namespace POS.Api.Controllers
         {
             try
             {
-                var results = _CategoryRepository.Delete(code,  profile);
+                var results = _UnitRepository.Delete(code,  profile);
                 return this.Ok(results);
             }
             catch (Exception ex)

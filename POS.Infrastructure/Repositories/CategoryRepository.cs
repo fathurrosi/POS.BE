@@ -18,9 +18,10 @@ namespace POS.Infrastructure.Repositories
 
         public CategoryRepository(POSContext context) { _context = context; }
 
-        public int Delete(int id)
+
+        public int Delete(string code, string profile)
         {
-            Category? item = this._context.Categories.Find(id);
+            Category? item = this._context.Categories.FirstOrDefault(p => p.Code == code && p.Profile == profile);
             if (item != null)
             {
                 this._context.Categories.Remove(item);
@@ -28,7 +29,6 @@ namespace POS.Infrastructure.Repositories
             }
             return -1;
         }
-
 
         public Category GetByCode(string code, string profile)
         {
@@ -52,7 +52,7 @@ namespace POS.Infrastructure.Repositories
             return items;
         }
 
-        public async Task<PagingResult<Usp_GetCategoryPagingResult>> GetDataPaging(int pageIndex, int pageSize)
+        public async Task<PagingResult<Usp_GetCategoryPagingResult>> GetDataPaging(int pageIndex, int pageSize, string profile)
         {
             var paramTotalRecord = new SqlParameter("@totalRecord", SqlDbType.Int);
             paramTotalRecord.Direction = ParameterDirection.Output;
@@ -60,13 +60,14 @@ namespace POS.Infrastructure.Repositories
             var sqlParameters = new[]
             {
                 new SqlParameter("@text", ""),
+                new SqlParameter("@profile", profile),
                 new SqlParameter("@pageIndex", pageIndex),
                 new SqlParameter("@pageSize", pageSize),
                 paramTotalRecord,
             };
 
             PagingResult<Usp_GetCategoryPagingResult> result = new PagingResult<Usp_GetCategoryPagingResult>(pageIndex, pageSize);
-            result.Items = await _context.SqlQueryAsync<Usp_GetCategoryPagingResult>("EXEC [dbo].[Usp_GetCategoryPaging] @text = @text, @pageIndex = @pageIndex, @pageSize = @pageSize, @totalRecord = @totalRecord OUTPUT", sqlParameters, default);
+            result.Items = await _context.SqlQueryAsync<Usp_GetCategoryPagingResult>("EXEC [dbo].[Usp_GetCategoryPaging] @search = @text,@profile =@profile, @pageIndex = @pageIndex, @pageSize = @pageSize, @totalRecord = @totalRecord OUTPUT", sqlParameters, default);
             result.TotalCount = (int)paramTotalRecord.Value;
 
             return result;
