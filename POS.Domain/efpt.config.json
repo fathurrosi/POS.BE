@@ -596,6 +596,14 @@
          "ObjectType": 1
       },
       {
+         "Name": "[dbo].[Usp_GetUnitByProfile]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[Usp_GetUnitPaging]",
+         "ObjectType": 1
+      },
+      {
          "Name": "[dbo].[Usp_GetUser]",
          "ObjectType": 1
       },

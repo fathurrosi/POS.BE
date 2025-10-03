@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace POS.Domain.Entities
 {
-    public partial class Usp_GetCategoryPagingResult
+    public partial class Usp_GetUnitPagingResult
     {
         [StringLength(10)]
         public string? Code { get; set; }

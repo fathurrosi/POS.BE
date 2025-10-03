@@ -213,7 +213,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_DeleteCustomerAsync(int? iD, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_DeleteCustomerResult>> Usp_DeleteCustomerAsync(int? iD, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -232,7 +232,7 @@ namespace POS.Infrastructure
                 },
                 parameterreturnValue,
             };
-            var _ = await _context.Database.ExecuteSqlRawAsync("EXEC @returnValue = [dbo].[Usp_DeleteCustomer] @ID = @ID", sqlParameters, cancellationToken);
+            var _ = await _context.SqlQueryAsync<Usp_DeleteCustomerResult>("EXEC @returnValue = [dbo].[Usp_DeleteCustomer] @ID = @ID", sqlParameters, cancellationToken);
 
             returnValue?.SetValue(parameterreturnValue.Value);
 
@@ -3623,6 +3623,95 @@ namespace POS.Infrastructure
             return _;
         }
 
+        public virtual async Task<List<Usp_GetUnitByProfileResult>> Usp_GetUnitByProfileAsync(string profile, string unit, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = System.Data.ParameterDirection.Output,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "Profile",
+                    Size = 100,
+                    Value = profile ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.VarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "Unit",
+                    Size = 10,
+                    Value = unit ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.VarChar,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryAsync<Usp_GetUnitByProfileResult>("EXEC @returnValue = [dbo].[Usp_GetUnitByProfile] @Profile = @Profile, @Unit = @Unit", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
+        public virtual async Task<List<Usp_GetUnitPagingResult>> Usp_GetUnitPagingAsync(string search, string profile, int? pageIndex, int? pageSize, OutputParameter<int?> totalRecord, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        {
+            var parametertotalRecord = new SqlParameter
+            {
+                ParameterName = "totalRecord",
+                Direction = System.Data.ParameterDirection.InputOutput,
+                Value = totalRecord?._value ?? Convert.DBNull,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = System.Data.ParameterDirection.Output,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "search",
+                    Size = 1000,
+                    Value = search ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.VarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "profile",
+                    Size = 100,
+                    Value = profile ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.VarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "pageIndex",
+                    Value = pageIndex ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.Int,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "pageSize",
+                    Value = pageSize ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.Int,
+                },
+                parametertotalRecord,
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryAsync<Usp_GetUnitPagingResult>("EXEC @returnValue = [dbo].[Usp_GetUnitPaging] @search = @search, @profile = @profile, @pageIndex = @pageIndex, @pageSize = @pageSize, @totalRecord = @totalRecord OUTPUT", sqlParameters, cancellationToken);
+
+            totalRecord?.SetValue(parametertotalRecord.Value);
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
         public virtual async Task<List<Usp_GetUserResult>> Usp_GetUserAsync(string username, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
@@ -5355,7 +5444,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<int> Usp_UpdateCustomerAsync(int? iD, string fullName, string address, string phone, string modifiedBy, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_UpdateCustomerResult>> Usp_UpdateCustomerAsync(int? iD, string fullName, string address, string phone, string modifiedBy, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
             {
@@ -5402,7 +5491,7 @@ namespace POS.Infrastructure
                 },
                 parameterreturnValue,
             };
-            var _ = await _context.Database.ExecuteSqlRawAsync("EXEC @returnValue = [dbo].[Usp_UpdateCustomer] @ID = @ID, @FullName = @FullName, @Address = @Address, @Phone = @Phone, @ModifiedBy = @ModifiedBy", sqlParameters, cancellationToken);
+            var _ = await _context.SqlQueryAsync<Usp_UpdateCustomerResult>("EXEC @returnValue = [dbo].[Usp_UpdateCustomer] @ID = @ID, @FullName = @FullName, @Address = @Address, @Phone = @Phone, @ModifiedBy = @ModifiedBy", sqlParameters, cancellationToken);
 
             returnValue?.SetValue(parameterreturnValue.Value);
 

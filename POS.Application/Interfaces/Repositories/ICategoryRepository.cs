@@ -1,23 +1,5 @@
-﻿//using System;
-//using System.Collections.Generic;
-//using System.Linq;
-//using System.Text;
-//using System.Threading.Tasks;
-
-//namespace POS.Application.Interfaces.Repositories
-//{
-//    internal interface ICategoryRepository
-//    {
-//    }
-//}
-
-using POS.Domain.Entities;
+﻿using POS.Domain.Entities;
 using POS.Domain.Models.Result;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace POS.Application.Interfaces.Repositories
 {
@@ -26,9 +8,9 @@ namespace POS.Application.Interfaces.Repositories
         List<Category> GetByUsername(string username);
 
         List<Category> GetByProfile(string profile);
-        int Delete(int id);
+        int Delete(string code, string profile);
         int Save(Category item);
         Category GetByCode(string code, string profile);
-        Task<PagingResult<Usp_GetCategoryPagingResult>> GetDataPaging(int pageIndex, int pageSize);
+        Task<PagingResult<Usp_GetCategoryPagingResult>> GetDataPaging(int pageIndex, int pageSize, string profile);
     }
 }

@@ -12,33 +12,27 @@ using System.Threading.Tasks;
 
 namespace POS.Infrastructure.Repositories
 {
-    public class ProductRepository : IProductRepository
+    public class UnitRepository : IUnitRepository
     {
         readonly POSContext _context;
 
-        public ProductRepository(POSContext context) { _context = context; }
+        public UnitRepository(POSContext context) { _context = context; }
+
 
         public int Delete(string code, string profile)
         {
-            Product? item = this._context.Products.FirstOrDefault(t => t.Code == code && t.Profile == profile);
+            Unit? item = this._context.Units.FirstOrDefault(p => p.Code == code && p.Profile == profile);
             if (item != null)
             {
-                this._context.Products.Remove(item);
+                this._context.Units.Remove(item);
                 return this._context.SaveChanges();
             }
             return -1;
         }
 
-
-        public List<Product> GetByProfile(string profile)
+        public Unit GetByCode(string code, string profile)
         {
-            return this._context.Products.Where(t => t.Profile == profile).AsNoTracking().ToList();
-        }
-
-        public Product GetByCode(string code, string profile)
-        {
-            Product? item = this._context.Products.FirstOrDefault(p => p.UniqueCode == code && p.Profile == profile);
-
+            Unit? item = this._context.Units.FirstOrDefault(p => p.Code == code && p.Profile == profile);
             if (item != null)
             {
                 this._context.Entry(item).State = EntityState.Detached;
@@ -46,8 +40,19 @@ namespace POS.Infrastructure.Repositories
             return item;
         }
 
+        public List<Unit> GetByProfile(string profile)
+        {
+            return this._context.Units.Where(t=> t.Profile==profile).AsNoTracking().ToList();
+        }
 
-        public async Task<PagingResult<Usp_GetProductPagingResult>> GetDataPaging(int pageIndex, int pageSize, string profile)
+        public List<Unit> GetByUsername(string username)
+        {
+            var userParam = new SqlParameter("@Username", username);
+            List<Unit> items = _context.Units.FromSqlRaw("EXECUTE [dbo].[Usp_GetUnitByUsername] @Username", userParam).ToList();
+            return items;
+        }
+
+        public async Task<PagingResult<Usp_GetUnitPagingResult>> GetDataPaging(int pageIndex, int pageSize, string profile)
         {
             var paramTotalRecord = new SqlParameter("@totalRecord", SqlDbType.Int);
             paramTotalRecord.Direction = ParameterDirection.Output;
@@ -55,22 +60,22 @@ namespace POS.Infrastructure.Repositories
             var sqlParameters = new[]
             {
                 new SqlParameter("@text", ""),
+                new SqlParameter("@profile", profile),
                 new SqlParameter("@pageIndex", pageIndex),
                 new SqlParameter("@pageSize", pageSize),
-                new SqlParameter("@profile", profile),
                 paramTotalRecord,
             };
 
-            PagingResult<Usp_GetProductPagingResult> result = new PagingResult<Usp_GetProductPagingResult>(pageIndex, pageSize);
-            result.Items = await _context.SqlQueryAsync<Usp_GetProductPagingResult>("EXEC [dbo].[Usp_GetProductPaging] @search = @text,@profile=@profile, @pageIndex = @pageIndex, @pageSize = @pageSize, @totalRecord = @totalRecord OUTPUT", sqlParameters, default);
+            PagingResult<Usp_GetUnitPagingResult> result = new PagingResult<Usp_GetUnitPagingResult>(pageIndex, pageSize);
+            result.Items = await _context.SqlQueryAsync<Usp_GetUnitPagingResult>("EXEC [dbo].[Usp_GetUnitPaging] @search = @text,@profile =@profile, @pageIndex = @pageIndex, @pageSize = @pageSize, @totalRecord = @totalRecord OUTPUT", sqlParameters, default);
             result.TotalCount = (int)paramTotalRecord.Value;
 
             return result;
         }
 
-        public int Save(Product item)
+        public int Save(Unit item)
         {
-            Product existing = GetByCode(item.UniqueCode, item.Profile);
+            Unit existing = GetByCode(item.Code, item.Profile);
             if (existing != null)
             {
                 return Update(item);
@@ -81,18 +86,18 @@ namespace POS.Infrastructure.Repositories
             }
         }
 
-        private int Create(Product item)
+        private int Create(Unit item)
         {
 
-            //item.CreatedBy = "system";
+            item.CreatedBy = "system";
             item.CreatedDate = DateTime.Now;
             this._context.Entry(item).State = EntityState.Added;
             return this._context.SaveChanges();
         }
 
-        private int Update(Product item)
+        private int Update(Unit item)
         {
-            //item.ModifiedBy = "system";
+            item.ModifiedBy = "system";
             item.ModifiedDate = DateTime.Now;
             this._context.Entry(item).State = EntityState.Modified;
             return this._context.SaveChanges();

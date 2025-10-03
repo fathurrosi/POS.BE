@@ -8,12 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace POS.Domain.Entities
 {
-    public partial class Usp_GetCategoryPagingResult
+    public partial class Usp_UpdateCustomerResult
     {
-        [StringLength(10)]
-        public string? Code { get; set; }
-        [StringLength(500)]
-        public string? Name { get; set; }
-        public int? RowIndex { get; set; }
     }
 }

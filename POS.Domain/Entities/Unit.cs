@@ -23,4 +23,18 @@ public partial class Unit
     [StringLength(100)]
     [Unicode(false)]
     public string Profile { get; set; } = null!;
+
+    [StringLength(20)]
+    [Unicode(false)]
+    public string? CreatedBy { get; set; }
+
+    [Column(TypeName = "datetime")]
+    public DateTime? CreatedDate { get; set; }
+
+    [StringLength(20)]
+    [Unicode(false)]
+    public string? ModifiedBy { get; set; }
+
+    [Column(TypeName = "datetime")]
+    public DateTime? ModifiedDate { get; set; }
 }

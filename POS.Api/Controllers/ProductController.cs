@@ -55,12 +55,12 @@ namespace POS.Api.Controllers
             }
         }
 
-        [HttpGet("Paging/{pageIndex}/{pageSize}")]
-        public async Task<ActionResult<PagingResult<Usp_GetProductPagingResult>>> GetDataPaging(int pageIndex = 1, int pageSize = 10)
+        [HttpGet("{pageIndex}/{pageSize}/{profile}")]
+        public async Task<ActionResult<PagingResult<Usp_GetProductPagingResult>>> GetDataPaging(string profile,int pageIndex = 1, int pageSize = 10)
         {
             try
             {
-                var results = await _ProductRepository.GetDataPaging(pageIndex, pageSize);
+                var results = await _ProductRepository.GetDataPaging(pageIndex, pageSize, profile);
                 if (results == null) return NotFound();
                 return this.Ok(results);
             }
@@ -87,11 +87,11 @@ namespace POS.Api.Controllers
         }
 
         [HttpDelete("{id}")]
-        public IActionResult Delete(int id)
+        public IActionResult Delete(string code, string profile)
         {
             try
             {
-                var results = _ProductRepository.Delete(id);
+                var results = _ProductRepository.Delete(code, profile);
                 return this.Ok(results);
             }
             catch (Exception ex)
