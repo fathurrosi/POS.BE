@@ -8,16 +8,16 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace POS.Domain.Entities
 {
-    public partial class Usp_GetUserPrevillageByUsernameResult
+    public partial class Usp_GetPrevillageByProfileRoleResult
     {
         [StringLength(100)]
-        public string Profile { get; set; } = default!;
-        [StringLength(50)]
-        public string Username { get; set; } = default!;
+        public string? Profile { get; set; }
         [StringLength(100)]
         public string? Role { get; set; }
         [StringLength(100)]
-        public string Menu { get; set; } = default!;
+        public string MenuCode { get; set; } = default!;
+        [StringLength(500)]
+        public string? MenuName { get; set; }
         public int MenuID { get; set; }
         public int RoleID { get; set; }
         public bool? AllowCreate { get; set; }
@@ -25,5 +25,7 @@ namespace POS.Domain.Entities
         public bool? AllowUpdate { get; set; }
         public bool? AllowDelete { get; set; }
         public bool? AllowPrint { get; set; }
+        public int? MenuParentID { get; set; }
+        public int? MenuSequence { get; set; }
     }
 }

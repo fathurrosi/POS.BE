@@ -6,15 +6,28 @@ using Microsoft.EntityFrameworkCore;
 
 namespace POS.Domain.Entities;
 
-[PrimaryKey("MenuId", "RoleId")]
-[Table("Previllage")]
-public partial class Previllage
+[Keyless]
+public partial class VRolePrevillage
 {
-    [Key]
+    [StringLength(100)]
+    [Unicode(false)]
+    public string? Profile { get; set; }
+
+    [StringLength(100)]
+    [Unicode(false)]
+    public string? Role { get; set; }
+
+    [StringLength(100)]
+    [Unicode(false)]
+    public string MenuCode { get; set; } = null!;
+
+    [StringLength(500)]
+    [Unicode(false)]
+    public string? MenuName { get; set; }
+
     [Column("MenuID")]
     public int MenuId { get; set; }
 
-    [Key]
     [Column("RoleID")]
     public int RoleId { get; set; }
 
@@ -28,11 +41,8 @@ public partial class Previllage
 
     public bool? AllowPrint { get; set; }
 
-    [ForeignKey("MenuId")]
-    [InverseProperty("Previllages")]
-    public virtual Menu Menu { get; set; } = null!;
+    [Column("MenuParentID")]
+    public int? MenuParentId { get; set; }
 
-    [ForeignKey("RoleId")]
-    [InverseProperty("Previllages")]
-    public virtual Role Role { get; set; } = null!;
+    public int? MenuSequence { get; set; }
 }

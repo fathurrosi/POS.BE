@@ -116,6 +116,10 @@
          "ObjectType": 0
       },
       {
+         "Name": "[dbo].[v_RolePrevillage]",
+         "ObjectType": 3
+      },
+      {
          "Name": "[dbo].[v_UserPrevillage]",
          "ObjectType": 3
       },
@@ -436,6 +440,14 @@
          "ObjectType": 1
       },
       {
+         "Name": "[dbo].[Usp_GetPrevillageByProfile]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[Usp_GetPrevillageByProfileRole]",
+         "ObjectType": 1
+      },
+      {
          "Name": "[dbo].[Usp_GetPrevillageByRole]",
          "ObjectType": 1
       },
@@ -493,6 +505,10 @@
       },
       {
          "Name": "[dbo].[Usp_GetRoleByID]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[dbo].[Usp_GetRoleByProfile]",
          "ObjectType": 1
       },
       {

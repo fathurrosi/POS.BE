@@ -47,4 +47,8 @@ public partial class User
     [StringLength(100)]
     [Unicode(false)]
     public string? Profile { get; set; }
+
+    [ForeignKey("Profile")]
+    [InverseProperty("Users")]
+    public virtual Profile? ProfileNavigation { get; set; }
 }

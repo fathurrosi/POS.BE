@@ -7,9 +7,10 @@ using POS.Domain.Entities;
 using POS.Domain.Models.Result;
 using POS.Infrastructure.Repositories;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace POS.Api.Controllers
-{    
+{
     [EnableCors("AllowedOrigins")]
     [Route("api/[controller]")]
     [ApiController]
@@ -24,7 +25,7 @@ namespace POS.Api.Controllers
             _logger = logger;
             _roleRepository = roleRepository;
         }
-        
+
         [HttpGet]
         public ActionResult<List<Role>> Get()
         {
@@ -39,7 +40,7 @@ namespace POS.Api.Controllers
                 _logger.LogError(ex.ToString());
                 return this.StatusCode(500, ex.Message);
 
-            }           
+            }
         }
 
         [HttpGet("{param}")]
@@ -67,12 +68,12 @@ namespace POS.Api.Controllers
             }
         }
 
-        [HttpGet("Paging/{pageIndex}/{pageSize}")]
-        public async Task<ActionResult<PagingResult<Usp_GetRolePagingResult>>> GetDataPaging(int pageIndex = 1, int pageSize = 10)
+        [HttpGet("Paging/{pageIndex}/{pageSize}/{profile}")]
+        public async Task<ActionResult<PagingResult<Usp_GetRolePagingResult>>> GetDataPaging(int pageIndex = 1, int pageSize = 10, string profile = "")
         {
             try
             {
-                var results = await _roleRepository.GetDataPaging(pageIndex, pageSize);
+                var results = await _roleRepository.GetDataPaging(pageIndex, pageSize, profile);
                 if (results == null) return NotFound();
                 return this.Ok(results);
             }
@@ -110,6 +111,23 @@ namespace POS.Api.Controllers
             {
                 _logger.LogError(ex.ToString());
                 return StatusCode(500, ex.Message);
+            }
+        }
+        // Changed route to avoid conflict with other [HttpGet("{param}")] route
+        [HttpGet("ByProfile/{profile}")]
+        public async Task<ActionResult<List<Usp_GetRoleByProfileResult>>> GetByProfile(string profile)
+        {
+            try
+            {
+                List<Usp_GetRoleByProfileResult> results = await _roleRepository.GetRoles(profile);
+                if (results == null) return NotFound();
+                return this.Ok(results);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return this.StatusCode(500, ex.Message);
+
             }
         }
     }

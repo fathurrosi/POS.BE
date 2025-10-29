@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using POS.Application.Interfaces.Repositories;
 using POS.Domain.Entities;
 using POS.Domain.Models.Result;
+using POS.Infrastructure;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -15,8 +16,14 @@ namespace POS.Infrastructure.Repositories
     public class RoleRepository : IRoleRepository
     {
         readonly POSContext _context;
+        readonly IPOSContextProcedures _contextProc;
 
-        public RoleRepository(POSContext context) { _context = context; }
+        public RoleRepository(POSContext context, IPOSContextProcedures contextProc)
+        {
+            _context = context;
+            _contextProc = contextProc;
+
+        }
 
         public int Delete(int id)
         {
@@ -53,7 +60,7 @@ namespace POS.Infrastructure.Repositories
             return items;
         }
 
-        public async Task<PagingResult<Usp_GetRolePagingResult>> GetDataPaging(int pageIndex, int pageSize)
+        public async Task<PagingResult<Usp_GetRolePagingResult>> GetDataPaging(int pageIndex, int pageSize, string profile)
         {
             var paramTotalRecord = new SqlParameter("@totalRecord", SqlDbType.Int);
             paramTotalRecord.Direction = ParameterDirection.Output;
@@ -63,14 +70,21 @@ namespace POS.Infrastructure.Repositories
                 new SqlParameter("@text", ""),
                 new SqlParameter("@pageIndex", pageIndex),
                 new SqlParameter("@pageSize", pageSize),
+                new SqlParameter("@profile", profile),
                 paramTotalRecord,
             };
 
             PagingResult<Usp_GetRolePagingResult> result = new PagingResult<Usp_GetRolePagingResult>(pageIndex, pageSize);
-            result.Items = await _context.SqlQueryAsync<Usp_GetRolePagingResult>("EXEC [dbo].[Usp_GetRolePaging] @text = @text, @pageIndex = @pageIndex, @pageSize = @pageSize, @totalRecord = @totalRecord OUTPUT", sqlParameters, default);
+            result.Items = await _context.SqlQueryAsync<Usp_GetRolePagingResult>("EXEC [dbo].[Usp_GetRolePaging] @text = @text, @pageIndex = @pageIndex, @pageSize = @pageSize, @profile=@profile, @totalRecord = @totalRecord OUTPUT", sqlParameters, default);
             result.TotalCount = (int)paramTotalRecord.Value;
 
             return result;
+        }
+
+        public async Task<List<Usp_GetRoleByProfileResult>> GetRoles(string profile)
+        {
+            List<Usp_GetRoleByProfileResult> results = await _contextProc.Usp_GetRoleByProfileAsync(profile);
+            return results;
         }
 
         public int Save(Role item)
@@ -78,7 +92,9 @@ namespace POS.Infrastructure.Repositories
             Role existing = GetById(item.Id);
             if (existing != null)
             {
-                return Update(item);
+                existing.Name = item.Name;
+                existing.Description = item.Description;
+                return Update(existing);
             }
             else
             {

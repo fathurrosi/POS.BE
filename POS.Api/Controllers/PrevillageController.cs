@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 using POS.Application.Interfaces.Repositories;
 using POS.Domain.Entities;
 using POS.Infrastructure.Repositories;
+using System.Threading.Tasks;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,12 +27,12 @@ namespace POS.Api.Controllers
         }
 
         [HttpGet("{username}")]
-        public List<VUserPrevillage> Get(string username)
+        public async Task<List<VUserPrevillage>> Get(string username)
         {
             List<VUserPrevillage> items = new List<VUserPrevillage>();
             try
             {
-                items = _previllageRepository.GetByUsername(username);
+                items =await _previllageRepository.GetByUsername(username);
             }
             catch (Exception ex)
             {
@@ -41,5 +42,20 @@ namespace POS.Api.Controllers
             return items;
         }
 
+        [HttpGet("{role}/{profile}")]
+        public async Task<List<Usp_GetPrevillageByProfileRoleResult>> Get(int role, string profile)
+        {
+            List<Usp_GetPrevillageByProfileRoleResult> items = new List<Usp_GetPrevillageByProfileRoleResult>();
+            try
+            {
+                items = await _previllageRepository.GetByProfileRole(profile, role);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+            }
+
+            return items;
+        }
     }
 }
