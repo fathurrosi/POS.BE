@@ -9,6 +9,10 @@ namespace POS.Domain.Entities;
 [Keyless]
 public partial class VUserPrevillage
 {
+    [StringLength(100)]
+    [Unicode(false)]
+    public string Profile { get; set; } = null!;
+
     [StringLength(50)]
     [Unicode(false)]
     public string Username { get; set; } = null!;

@@ -92,6 +92,8 @@ namespace POS.Infrastructure
         Task<List<Usp_GetPiutangResult>> Usp_GetPiutangAsync(DateOnly? startDate, DateOnly? endDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<Usp_GetPrevBuyPricesResult>> Usp_GetPrevBuyPricesAsync(DateOnly? startDate, int? catalogID, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<Usp_GetPrevillageResult>> Usp_GetPrevillageAsync(OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<List<Usp_GetPrevillageByProfileResult>> Usp_GetPrevillageByProfileAsync(string profile, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<List<Usp_GetPrevillageByProfileRoleResult>> Usp_GetPrevillageByProfileRoleAsync(string profile, int? role, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<Usp_GetPrevillageByRoleResult>> Usp_GetPrevillageByRoleAsync(int? roleID, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<Usp_GetPrevillageByRoleMenuResult>> Usp_GetPrevillageByRoleMenuAsync(int? roleID, int? menuID, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<Usp_GetPrevillageByUsernameResult>> Usp_GetPrevillageByUsernameAsync(string username, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
@@ -107,8 +109,9 @@ namespace POS.Infrastructure
         Task<List<Usp_GetReconcilePagingResult>> Usp_GetReconcilePagingAsync(string text, int? pageIndex, int? pageSize, OutputParameter<int?> totalRecord, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<Usp_GetRoleResult>> Usp_GetRoleAsync(OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<Usp_GetRoleByIDResult>> Usp_GetRoleByIDAsync(int? iD, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<List<Usp_GetRoleByProfileResult>> Usp_GetRoleByProfileAsync(string profile, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<Usp_GetRoleByUsernameResult>> Usp_GetRoleByUsernameAsync(string username, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
-        Task<List<Usp_GetRolePagingResult>> Usp_GetRolePagingAsync(string text, int? pageIndex, int? pageSize, OutputParameter<int?> totalRecord, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
+        Task<List<Usp_GetRolePagingResult>> Usp_GetRolePagingAsync(string text, int? pageIndex, int? pageSize, string profile, OutputParameter<int?> totalRecord, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<Usp_GetSaleByCounterResult>> Usp_GetSaleByCounterAsync(long? counter, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<Usp_GetSaleByTransactionIDResult>> Usp_GetSaleByTransactionIDAsync(string transactionID, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);
         Task<List<Usp_GetSaleNewIndexResult>> Usp_GetSaleNewIndexAsync(DateOnly? transactionDate, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default);

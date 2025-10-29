@@ -11,6 +11,8 @@ namespace POS.Application.Interfaces.Repositories
         int Delete(int id);
         int Save(Role item);
         Role GetById(int id);
-        Task<PagingResult<Usp_GetRolePagingResult>> GetDataPaging(int pageIndex, int pageSize);
+        Task<PagingResult<Usp_GetRolePagingResult>> GetDataPaging(int pageIndex, int pageSize, string profile);
+
+        Task<List<Usp_GetRoleByProfileResult>> GetRoles(string profile);
     }
 }

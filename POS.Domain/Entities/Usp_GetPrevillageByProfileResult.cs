@@ -8,7 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace POS.Domain.Entities
 {
-    public partial class Usp_GetUserPrevillageByUsernameResult
+    public partial class Usp_GetPrevillageByProfileResult
     {
         [StringLength(100)]
         public string Profile { get; set; } = default!;

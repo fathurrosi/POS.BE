@@ -14,6 +14,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace POS.Api.Controllers
 {
@@ -43,11 +44,11 @@ namespace POS.Api.Controllers
 
         [HttpPost("Login")]
         [AllowAnonymous]
-        public IActionResult Login(Domain.Models.Request.LoginRequest item)
+        public async Task<IActionResult> Login(Domain.Models.Request.LoginRequest item)
         {
             try
             {
-                var response = this.Authenticate(item);
+                var response = await this.Authenticate(item);
                 if (response.Success) return Ok(response);
                 else return Unauthorized();
             }
@@ -94,7 +95,7 @@ namespace POS.Api.Controllers
         }
 
 
-        private LoginResponse<User> Authenticate(Domain.Models.Request.LoginRequest request)
+        private async Task<LoginResponse<User>> Authenticate(Domain.Models.Request.LoginRequest request)
         {
             try
             {
@@ -103,7 +104,7 @@ namespace POS.Api.Controllers
                 if (user != null && BCryptPasswordHasher.VerifyPassword(request.Password, user.Password!))
                 {
                     List<Role> roles = _roleRepository.GetByUsername(user.Username);
-                    List<VUserPrevillage> previllages = _previllageRepository.GetByUsername(user.Username);
+                    List<VUserPrevillage> previllages =await _previllageRepository.GetByUsername(user.Username);
                     user.RefreshToken = GenerateRefreshToken();
                     user.RefreshTokenExpires = DateTime.UtcNow.AddMinutes(5);
 

@@ -19,4 +19,8 @@ public partial class UserRole
 
     [Column("RoleID")]
     public int? RoleId { get; set; }
+
+    [ForeignKey("RoleId")]
+    [InverseProperty("UserRoles")]
+    public virtual Role? Role { get; set; }
 }

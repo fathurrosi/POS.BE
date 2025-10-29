@@ -62,7 +62,7 @@ namespace POS.Infrastructure.Repositories
             };
 
             PagingResult<Usp_GetProductPagingResult> result = new PagingResult<Usp_GetProductPagingResult>(pageIndex, pageSize);
-            result.Items = await _context.SqlQueryAsync<Usp_GetProductPagingResult>("EXEC [dbo].[Usp_GetProductPaging] @search = @text,@profile=@profile, @pageIndex = @pageIndex, @pageSize = @pageSize, @totalRecord = @totalRecord OUTPUT", sqlParameters, default);
+            result.Items = await _context.SqlQueryAsync<Usp_GetProductPagingResult>("EXEC [Usp_GetProductPaging] @search = @text,@profile=@profile, @pageIndex = @pageIndex, @pageSize = @pageSize, @totalRecord = @totalRecord OUTPUT", sqlParameters, default);
             result.TotalCount = (int)paramTotalRecord.Value;
 
             return result;

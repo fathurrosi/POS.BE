@@ -2415,6 +2415,66 @@ namespace POS.Infrastructure
             return _;
         }
 
+        public virtual async Task<List<Usp_GetPrevillageByProfileResult>> Usp_GetPrevillageByProfileAsync(string profile, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = System.Data.ParameterDirection.Output,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "profile",
+                    Size = 100,
+                    Value = profile ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.VarChar,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryAsync<Usp_GetPrevillageByProfileResult>("EXEC @returnValue = [dbo].[Usp_GetPrevillageByProfile] @profile = @profile", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
+        public virtual async Task<List<Usp_GetPrevillageByProfileRoleResult>> Usp_GetPrevillageByProfileRoleAsync(string profile, int? role, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = System.Data.ParameterDirection.Output,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "profile",
+                    Size = 100,
+                    Value = profile ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.VarChar,
+                },
+                new SqlParameter
+                {
+                    ParameterName = "role",
+                    Value = role ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.Int,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryAsync<Usp_GetPrevillageByProfileRoleResult>("EXEC @returnValue = [dbo].[Usp_GetPrevillageByProfileRole] @profile = @profile, @role = @role", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
         public virtual async Task<List<Usp_GetPrevillageByRoleResult>> Usp_GetPrevillageByRoleAsync(int? roleID, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
@@ -2848,6 +2908,33 @@ namespace POS.Infrastructure
             return _;
         }
 
+        public virtual async Task<List<Usp_GetRoleByProfileResult>> Usp_GetRoleByProfileAsync(string profile, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        {
+            var parameterreturnValue = new SqlParameter
+            {
+                ParameterName = "returnValue",
+                Direction = System.Data.ParameterDirection.Output,
+                SqlDbType = System.Data.SqlDbType.Int,
+            };
+
+            var sqlParameters = new []
+            {
+                new SqlParameter
+                {
+                    ParameterName = "profile",
+                    Size = 100,
+                    Value = profile ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.VarChar,
+                },
+                parameterreturnValue,
+            };
+            var _ = await _context.SqlQueryAsync<Usp_GetRoleByProfileResult>("EXEC @returnValue = [dbo].[Usp_GetRoleByProfile] @profile = @profile", sqlParameters, cancellationToken);
+
+            returnValue?.SetValue(parameterreturnValue.Value);
+
+            return _;
+        }
+
         public virtual async Task<List<Usp_GetRoleByUsernameResult>> Usp_GetRoleByUsernameAsync(string username, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parameterreturnValue = new SqlParameter
@@ -2875,7 +2962,7 @@ namespace POS.Infrastructure
             return _;
         }
 
-        public virtual async Task<List<Usp_GetRolePagingResult>> Usp_GetRolePagingAsync(string text, int? pageIndex, int? pageSize, OutputParameter<int?> totalRecord, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
+        public virtual async Task<List<Usp_GetRolePagingResult>> Usp_GetRolePagingAsync(string text, int? pageIndex, int? pageSize, string profile, OutputParameter<int?> totalRecord, OutputParameter<int> returnValue = null, CancellationToken cancellationToken = default)
         {
             var parametertotalRecord = new SqlParameter
             {
@@ -2912,10 +2999,17 @@ namespace POS.Infrastructure
                     Value = pageSize ?? Convert.DBNull,
                     SqlDbType = System.Data.SqlDbType.Int,
                 },
+                new SqlParameter
+                {
+                    ParameterName = "profile",
+                    Size = 100,
+                    Value = profile ?? Convert.DBNull,
+                    SqlDbType = System.Data.SqlDbType.VarChar,
+                },
                 parametertotalRecord,
                 parameterreturnValue,
             };
-            var _ = await _context.SqlQueryAsync<Usp_GetRolePagingResult>("EXEC @returnValue = [dbo].[Usp_GetRolePaging] @text = @text, @pageIndex = @pageIndex, @pageSize = @pageSize, @totalRecord = @totalRecord OUTPUT", sqlParameters, cancellationToken);
+            var _ = await _context.SqlQueryAsync<Usp_GetRolePagingResult>("EXEC @returnValue = [dbo].[Usp_GetRolePaging] @text = @text, @pageIndex = @pageIndex, @pageSize = @pageSize, @profile = @profile, @totalRecord = @totalRecord OUTPUT", sqlParameters, cancellationToken);
 
             totalRecord?.SetValue(parametertotalRecord.Value);
             returnValue?.SetValue(parameterreturnValue.Value);

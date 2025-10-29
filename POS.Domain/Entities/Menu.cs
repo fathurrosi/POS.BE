@@ -68,4 +68,11 @@ public partial class Menu
     [StringLength(100)]
     [Unicode(false)]
     public string? Profile { get; set; }
+
+    [InverseProperty("Menu")]
+    public virtual ICollection<Previllage> Previllages { get; set; } = new List<Previllage>();
+
+    [ForeignKey("Profile")]
+    [InverseProperty("Menus")]
+    public virtual Profile? ProfileNavigation { get; set; }
 }

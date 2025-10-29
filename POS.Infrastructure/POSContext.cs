@@ -60,6 +60,8 @@ public partial class POSContext : DbContext
 
     public virtual DbSet<UserRole> UserRoles { get; set; }
 
+    public virtual DbSet<VRolePrevillage> VRolePrevillages { get; set; }
+
     public virtual DbSet<VUserPrevillage> VUserPrevillages { get; set; }
 
     public virtual DbSet<Warehouse> Warehouses { get; set; }
@@ -115,11 +117,21 @@ public partial class POSContext : DbContext
         modelBuilder.Entity<Menu>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK_menu");
+
+            entity.HasOne(d => d.ProfileNavigation).WithMany(p => p.Menus).HasConstraintName("FK_Menu_Profile");
         });
 
         modelBuilder.Entity<Previllage>(entity =>
         {
             entity.HasKey(e => new { e.MenuId, e.RoleId }).HasName("PK_previllage");
+
+            entity.HasOne(d => d.Menu).WithMany(p => p.Previllages)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Previllage_Menu");
+
+            entity.HasOne(d => d.Role).WithMany(p => p.Previllages)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_Previllage_Role");
         });
 
         modelBuilder.Entity<Product>(entity =>
@@ -157,6 +169,8 @@ public partial class POSContext : DbContext
         modelBuilder.Entity<Role>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK_role");
+
+            entity.HasOne(d => d.ProfileNavigation).WithMany(p => p.Roles).HasConstraintName("FK_Role_Profile");
         });
 
         modelBuilder.Entity<Sale>(entity =>
@@ -185,9 +199,21 @@ public partial class POSContext : DbContext
             entity.Property(e => e.TransactionDate).HasDefaultValueSql("(getdate())");
         });
 
+        modelBuilder.Entity<User>(entity =>
+        {
+            entity.HasOne(d => d.ProfileNavigation).WithMany(p => p.Users).HasConstraintName("FK_User_Profile");
+        });
+
         modelBuilder.Entity<UserRole>(entity =>
         {
             entity.HasKey(e => e.Id).HasName("PK_userrole");
+
+            entity.HasOne(d => d.Role).WithMany(p => p.UserRoles).HasConstraintName("FK_UserRole_Role");
+        });
+
+        modelBuilder.Entity<VRolePrevillage>(entity =>
+        {
+            entity.ToView("v_RolePrevillage");
         });
 
         modelBuilder.Entity<VUserPrevillage>(entity =>

@@ -74,8 +74,17 @@ public partial class Profile
     public virtual ICollection<Customer> Customers { get; set; } = new List<Customer>();
 
     [InverseProperty("ProfileNavigation")]
+    public virtual ICollection<Menu> Menus { get; set; } = new List<Menu>();
+
+    [InverseProperty("ProfileNavigation")]
     public virtual ICollection<Product> Products { get; set; } = new List<Product>();
 
     [InverseProperty("ProfileNavigation")]
+    public virtual ICollection<Role> Roles { get; set; } = new List<Role>();
+
+    [InverseProperty("ProfileNavigation")]
     public virtual ICollection<Supplier> Suppliers { get; set; } = new List<Supplier>();
+
+    [InverseProperty("ProfileNavigation")]
+    public virtual ICollection<User> Users { get; set; } = new List<User>();
 }

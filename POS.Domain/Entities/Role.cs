@@ -38,4 +38,14 @@ public partial class Role
     [StringLength(100)]
     [Unicode(false)]
     public string? Profile { get; set; }
+
+    [InverseProperty("Role")]
+    public virtual ICollection<Previllage> Previllages { get; set; } = new List<Previllage>();
+
+    [ForeignKey("Profile")]
+    [InverseProperty("Roles")]
+    public virtual Profile? ProfileNavigation { get; set; }
+
+    [InverseProperty("Role")]
+    public virtual ICollection<UserRole> UserRoles { get; set; } = new List<UserRole>();
 }
