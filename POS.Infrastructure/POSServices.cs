@@ -11,7 +11,7 @@ namespace POS.Infrastructure
     {
         public static IServiceCollection AddServices(this IServiceCollection services, IConfiguration config)
         {
-            services.AddDbContext<POSContext>(options => options.UseSqlServer(config.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<POSContext>(options => options.UseSqlServer(config.GetConnectionString("DefaultConnection")), ServiceLifetime.Scoped);
 
             services.AddTransient<IPOSContextProcedures, POSContextProcedures>();
             services.AddTransient<IUserRepository, UserRepository>();

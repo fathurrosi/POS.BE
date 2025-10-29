@@ -32,7 +32,7 @@ namespace POS.Api.Controllers
             List<VUserPrevillage> items = new List<VUserPrevillage>();
             try
             {
-                items =await _previllageRepository.GetByUsername(username);
+                items = await _previllageRepository.GetByUsername(username);
             }
             catch (Exception ex)
             {
@@ -56,6 +56,21 @@ namespace POS.Api.Controllers
             }
 
             return items;
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Save(List<VRolePrevillage> items)
+        {
+            try
+            {
+                var results = await _previllageRepository.Save(items);
+                return this.Ok(results);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex.ToString());
+                return StatusCode(500, ex.Message);
+            }
         }
     }
 }
